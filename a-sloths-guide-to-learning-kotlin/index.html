@@ -1,0 +1,397 @@
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>A Sloth's guide to learning Kotlin</title>
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="../assets/built/screen.css?v=06c3ace0d9">
+
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="canonical" href="index.html">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <link rel="amphtml" href="amp/index.html">
+    
+    <meta property="og:site_name" content="Mike Scamell">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="A Sloth's guide to learning Kotlin">
+    <meta property="og:description" content="I'm starting to learn Kotlin. I'm pretty sure a large majority of all Android devs are also doing this right now. There are plenty of blog posts, videos, podcasts, talks etc. etc. being produced. Rather than doing another learn X or whatever about Kotlin blog post, my intention is to">
+    <meta property="og:url" content="http://localhost:2368/a-sloths-guide-to-learning-kotlin/">
+    <meta property="og:image" content="http://localhost:2368/content/images/2018/11/6322945345_2d629d3eb2_b.jpg">
+    <meta property="article:published_time" content="2017-10-29T15:02:00.000Z">
+    <meta property="article:modified_time" content="2018-11-18T19:42:04.000Z">
+    <meta property="article:tag" content="androiddev">
+    <meta property="article:tag" content="kotlin">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="A Sloth's guide to learning Kotlin">
+    <meta name="twitter:description" content="I'm starting to learn Kotlin. I'm pretty sure a large majority of all Android devs are also doing this right now. There are plenty of blog posts, videos, podcasts, talks etc. etc. being produced. Rather than doing another learn X or whatever about Kotlin blog post, my intention is to">
+    <meta name="twitter:url" content="http://localhost:2368/a-sloths-guide-to-learning-kotlin/">
+    <meta name="twitter:image" content="http://localhost:2368/content/images/2018/11/6322945345_2d629d3eb2_b.jpg">
+    <meta name="twitter:label1" content="Written by">
+    <meta name="twitter:data1" content="Mike Scamell">
+    <meta name="twitter:label2" content="Filed under">
+    <meta name="twitter:data2" content="androiddev, kotlin">
+    <meta name="twitter:site" content="@mikescamell">
+    <meta property="og:image:width" content="1000">
+    <meta property="og:image:height" content="750">
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Mike Scamell",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "http://localhost:2368/favicon.ico",
+            "width": 60,
+            "height": 60
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Mike Scamell",
+        "image": {
+            "@type": "ImageObject",
+            "url": "//www.gravatar.com/avatar/2a389d50c33966a79a8cf6fe29c6080e?s=250&d=mm&r=x",
+            "width": 250,
+            "height": 250
+        },
+        "url": "http://localhost:2368/author/mike/",
+        "sameAs": []
+    },
+    "headline": "A Sloth&#x27;s guide to learning Kotlin",
+    "url": "http://localhost:2368/a-sloths-guide-to-learning-kotlin/",
+    "datePublished": "2017-10-29T15:02:00.000Z",
+    "dateModified": "2018-11-18T19:42:04.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "http://localhost:2368/content/images/2018/11/6322945345_2d629d3eb2_b.jpg",
+        "width": 1000,
+        "height": 750
+    },
+    "keywords": "androiddev, kotlin",
+    "description": "I&#x27;m starting to learn Kotlin. I&#x27;m pretty sure a large majority of all Android devs are also doing this right now. There are plenty of blog posts, videos, podcasts, talks etc. etc. being produced. Rather than doing another learn X or whatever about Kotlin blog post, my intention is to",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "http://localhost:2368/"
+    }
+}
+    </script>
+
+    <script src="../public/ghost-sdk.js?v=06c3ace0d9"></script>
+<script>
+ghost.init({
+	clientId: "ghost-frontend",
+	clientSecret: "07d57a1d866f"
+});
+</script>
+    <meta name="generator" content="Ghost 2.6">
+    <link rel="alternate" type="application/rss+xml" title="Mike Scamell" href="../rss/index.html">
+
+</head>
+<body class="post-template tag-androiddev tag-kotlin">
+
+    <div class="site-wrapper">
+
+        
+
+<header class="site-header outer">
+    <div class="inner">
+        <nav class="site-nav">
+    <div class="site-nav-left">
+                <a class="site-nav-logo" href="../">Mike Scamell</a>
+            <ul class="nav" role="menu">
+    <li class="nav-home" role="menuitem"><a href="../">Home</a></li>
+</ul>
+
+    </div>
+    <div class="site-nav-right">
+        <div class="social-links">
+                <a class="social-link social-link-tw" href="https://twitter.com/mikescamell" title="Twitter" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"></path></svg>
+</a>
+        </div>
+            <a class="rss-button" href="https://feedly.com/i/subscription/feed/http://localhost:2368/rss/" title="RSS" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24"><circle cx="6.18" cy="17.82" r="2.18"></circle><path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"></path></svg>
+</a>
+    </div>
+</nav>
+    </div>
+</header>
+
+
+<main id="site-main" class="site-main outer">
+    <div class="inner">
+
+        <article class="post-full post tag-androiddev tag-kotlin ">
+
+            <header class="post-full-header">
+                <section class="post-full-meta">
+                    <time class="post-full-meta-date" datetime="2017-10-29">29 October 2017</time>
+                        <span class="date-divider">/</span> <a href="../tag/androiddev/">androiddev</a>
+                </section>
+                <h1 class="post-full-title">A Sloth's guide to learning Kotlin</h1>
+            </header>
+
+            <figure class="post-full-image" style="background-image: url(../content/images/2018/11/6322945345_2d629d3eb2_b.jpg)">
+            </figure>
+
+            <section class="post-full-content">
+                <div class="post-content">
+                    <p>I'm starting to learn Kotlin. I'm pretty sure a large majority of all Android devs are also doing this right now. There are plenty of blog posts, videos, podcasts, talks etc. etc. being produced. Rather than doing another learn X or whatever about Kotlin blog post, my intention is to post things here that I've found particularly interesting or useful. Therefore, what you're reading is incomplete, may never be completed and might make no f***ing sense. But I'm keen to get things down so that I have something to come back to. And maybe you might find it interesting as well. Or not. It doesn't matter, this isn't for you, this is for future Mike 👋 (Remember to fry the pillow)</p><h3 id="beginner-resources">Beginner resources</h3><h4 id="blog-posts">Blog posts</h4><ul><li><a href="https://blog.bugsnag.com/introduction-to-kotlin/">Introduction to Kotlin</a></li><li><a href="https://gist.github.com/dodyg/5823184">Kotlin Programming Language Cheat Sheet Part 1 </a></li><li><a href="https://techbeacon.com/mastering-kotlin-practical-guide-android-devs">Mastering Kotlin: A practical guide for Android devs</a></li></ul><h3 id="advanced-resources">Advanced Resources</h3><h4 id="blog-posts-1">Blog posts</h4><h3 id="courses">Courses</h3><ul><li><a href="https://www.linkedin.com/learning/kotlin-for-java-developers?u=2007908">Kotlin for Java developers</a></li></ul><h3 id="language-features">Language Features</h3><h4 id="properties">Properties</h4><p>What's the difference between a <code>field</code> in Java and a <code>property</code> in Kotlin? There's a lot more to a property in Kotlin, the default includes accessors and you can even do propert delegation. <a href="https://blog.kotlin-academy.com/kotlin-programmer-dictionary-field-vs-property-30ab7ef70531">This</a> article explains it all well.</p><h4 id="list">List</h4><p>Usually in Java I would new up an <code>ArrayList</code> and then <code>add</code> everything I needed to it, line after line after line...No more! While you can do it that way in Kotlin, you can also do this:</p><pre><code>val strings = arrayListOf("Android", "Snacks", "Rocks)
+</code></pre><p>This will give me an <code>ArrayList</code> of <code>String</code> without the need for all those extra lines. There's also <code>listOf</code>, <code>mutableListOf</code>, <code>listOfNotNull</code> and <code>emptyList</code>.</p><h4 id="singletons">Singletons</h4><h6 id="singleton-with-single-argument">Singleton with single argument</h6><p>If you need to create a Singleton with an argument then you need to check out <a href="https://medium.com/@BladeCoder/kotlin-singletons-with-argument-194ef06edd9e">this</a> blog post by Christoper Beyls which shows how to implement a double locking mechanism in Kotlin.</p><h4 id="sealed-classes">Sealed Classes</h4><p><a href="https://medium.com/livefront/tidy-up-your-observable-streams-with-kotlins-sealed-classes-ce7bdce9c270">This</a> is a great example (and explanation) on how they can be used to handle success and errors in an RxJava stream.</p><p><a href="https://antonioleiva.com/sealed-classes-kotlin/">https://antonioleiva.com/sealed-classes-kotlin/</a></p><h4 id="inlining">Inlining</h4><p>Properties in Kotlin can be inlined! this will help produce more optimal bytecode.<br><a href="https://blog.egorand.me/inlining-kotlin-properties/">https://blog.egorand.me/inlining-kotlin-properties/</a></p><h4 id="custom-property-delegates">Custom Property Delegates</h4><p><a href="https://robots.thoughtbot.com/kotlin-is-dope-and-so-are-its-custom-property-delegates">https://robots.thoughtbot.com/kotlin-is-dope-and-so-are-its-custom-property-delegates</a></p><p><a href="https://blog.kotlin-academy.com/superpowers-of-kotlin-delegation-e6bd9ff8026c">https://blog.kotlin-academy.com/superpowers-of-kotlin-delegation-e6bd9ff8026c</a></p><h4 id="-jvmsuppresswildcards">@JvmSuppressWildcards</h4><p><a href="http://adavis.info/2017/08/jvmsuppresswildcards-biggest-annoyance-kotlin.html">http://adavis.info/2017/08/jvmsuppresswildcards-biggest-annoyance-kotlin.html</a></p><h4 id="run-with-let-also-and-apply">Run, with, let, also and apply</h4><p><a href="https://android.jlelse.eu/mastering-kotlin-standard-functions-run-with-let-also-and-apply-9cd334b0ef84">https://android.jlelse.eu/mastering-kotlin-standard-functions-run-with-let-also-and-apply-9cd334b0ef84</a></p><h3 id="gotchas">Gotchas</h3><p><a href="https://medium.com/@xzan/the-drawbacks-of-migrating-to-kotlin-51f49a96107a">https://medium.com/@xzan/the-drawbacks-of-migrating-to-kotlin-51f49a96107a</a></p>
+                </div>
+            </section>
+
+
+            <footer class="post-full-footer">
+
+
+                    
+<section class="author-card">
+        <img class="author-profile-image" src="http://www.gravatar.com/avatar/2a389d50c33966a79a8cf6fe29c6080e?s=250&amp;d=mm&amp;r=x" alt="Mike Scamell">
+    <section class="author-card-content">
+        <h4 class="author-card-name"><a href="../author/mike/">Mike Scamell</a></h4>
+            <p>Read <a href="../author/mike/">more posts</a> by this author.</p>
+    </section>
+</section>
+<div class="post-full-footer-right">
+    <a class="author-card-button" href="../author/mike/">Read More</a>
+</div>
+
+
+            </footer>
+
+
+        </article>
+
+    </div>
+</main>
+
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+                <article class="read-next-card" style="background-image: url(https://static.ghost.org/v1.0.0/images/blog-cover.jpg)">
+                    <header class="read-next-card-header">
+                        <small class="read-next-card-header-sitetitle">— Mike Scamell —</small>
+                        <h3 class="read-next-card-header-title"><a href="../tag/androiddev/">androiddev</a></h3>
+                    </header>
+                    <div class="read-next-divider"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24"><path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"></path></svg>
+</div>
+                    <div class="read-next-card-content">
+                        <ul>
+                            <li><a href="../bottoms-up-bottomnavigationview-updates-in-the-material-design-design-support-library/">Bottoms Up! - BottomNavigationView Updates in the Material Components/Design Support Library</a></li>
+                            <li><a href="../shared-element-transitions-updates/">Shared Element Transitions - Updates</a></li>
+                            <li><a href="../shared-element-transitions-part-5/">Shared Element Transitions - Part 5:  Fixing Flashing/Blinking</a></li>
+                        </ul>
+                    </div>
+                    <footer class="read-next-card-footer">
+                        <a href="../tag/androiddev/">See all 9 posts →</a>
+                    </footer>
+                </article>
+
+                <article class="post-card post tag-androiddev tag-bottomnavigationview">
+        <a class="post-card-image-link" href="../bottoms-up-bottomnavigationview-updates-in-the-material-design-design-support-library/">
+            <div class="post-card-image" style="background-image: url(../content/images/2018/11/bottomappbar-3.jpg)"></div>
+        </a>
+    <div class="post-card-content">
+        <a class="post-card-content-link" href="../bottoms-up-bottomnavigationview-updates-in-the-material-design-design-support-library/">
+            <header class="post-card-header">
+                    <span class="post-card-tags">androiddev</span>
+                <h2 class="post-card-title">Bottoms Up! - BottomNavigationView Updates in the Material Components/Design Support Library</h2>
+            </header>
+            <section class="post-card-excerpt">
+                <p>I've just removed the design support library and added the new Material Components library (com.google.android.material:material:1.0.0-alpha3 as of writing) and currently there's some sea birds outside making</p>
+            </section>
+        </a>
+        <footer class="post-card-meta">
+
+            <ul class="author-list">
+                <li class="author-list-item">
+
+                    <div class="author-name-tooltip">
+                        Mike Scamell
+                    </div>
+
+                        <a href="../author/mike/" class="static-avatar"><img class="author-profile-image" src="http://www.gravatar.com/avatar/2a389d50c33966a79a8cf6fe29c6080e?s=250&amp;d=mm&amp;r=x" alt="Mike Scamell"></a>
+                </li>
+            </ul>
+
+            <span class="reading-time">3 min read</span>
+
+        </footer>
+    </div>
+</article>
+
+                <article class="post-card post tag-androiddev tag-sharedelementtranistions">
+        <a class="post-card-image-link" href="../shared-element-transitions-updates/">
+            <div class="post-card-image" style="background-image: url(../content/images/2018/11/Updates-1.png)"></div>
+        </a>
+    <div class="post-card-content">
+        <a class="post-card-content-link" href="../shared-element-transitions-updates/">
+            <header class="post-card-header">
+                    <span class="post-card-tags">androiddev</span>
+                <h2 class="post-card-title">Shared Element Transitions - Updates</h2>
+            </header>
+            <section class="post-card-excerpt">
+                <p>I didn't expect to get so many views on my Shared Element Transition blog series. But making it into Android Dev Digest and Android Weekly has increased the number of people looking at</p>
+            </section>
+        </a>
+        <footer class="post-card-meta">
+
+            <ul class="author-list">
+                <li class="author-list-item">
+
+                    <div class="author-name-tooltip">
+                        Mike Scamell
+                    </div>
+
+                        <a href="../author/mike/" class="static-avatar"><img class="author-profile-image" src="http://www.gravatar.com/avatar/2a389d50c33966a79a8cf6fe29c6080e?s=250&amp;d=mm&amp;r=x" alt="Mike Scamell"></a>
+                </li>
+            </ul>
+
+            <span class="reading-time">2 min read</span>
+
+        </footer>
+    </div>
+</article>
+
+        </div>
+    </div>
+</aside>
+
+<div class="floating-header">
+    <div class="floating-header-logo">
+        <a href="../">
+            <span>Mike Scamell</span>
+        </a>
+    </div>
+    <span class="floating-header-divider">—</span>
+    <div class="floating-header-title">A Sloth's guide to learning Kotlin</div>
+    <div class="floating-header-share">
+        <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24">
+    <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"></path>
+</svg>
+</div>
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=A%20Sloth's%20guide%20to%20learning%20Kotlin&amp;url=http://localhost:2368/a-sloths-guide-to-learning-kotlin/" onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"></path></svg>
+        </a>
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:2368/a-sloths-guide-to-learning-kotlin/" onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"></path></svg>
+        </a>
+    </div>
+    <progress id="reading-progress" class="progress" value="0">
+        <div class="progress-container">
+            <span class="progress-bar"></span>
+        </div>
+    </progress>
+</div>
+
+
+
+
+        <footer class="site-footer outer">
+            <div class="site-footer-content inner">
+                <section class="copyright"><a href="../">Mike Scamell</a> © 2018</section>
+                <nav class="site-footer-nav">
+                    <a href="../">Latest Posts</a>
+                    
+                    <a href="https://twitter.com/mikescamell" target="_blank" rel="noopener">Twitter</a>
+                    <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a>
+                </nav>
+            </div>
+        </footer>
+
+    </div>
+
+
+    <script>
+        var images = document.querySelectorAll('.kg-gallery-image img');
+        images.forEach(function (image) {
+            var container = image.closest('.kg-gallery-image');
+            var width = image.attributes.width.value;
+            var height = image.attributes.height.value;
+            var ratio = width / height;
+            container.style.flex = ratio + ' 1 0%';
+        })
+    </script>
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous">
+    </script>
+    <script type="text/javascript" src="../assets/built/jquery.fitvids.js?v=06c3ace0d9"></script>
+
+
+    <script>
+
+// NOTE: Scroll performance is poor in Safari
+// - this appears to be due to the events firing much more slowly in Safari.
+//   Dropping the scroll event and using only a raf loop results in smoother
+//   scrolling but continuous processing even when not scrolling
+$(document).ready(function () {
+    // Start fitVids
+    var $postContent = $(".post-full-content");
+    $postContent.fitVids();
+    // End fitVids
+
+    var progressBar = document.querySelector('#reading-progress');
+    var header = document.querySelector('.floating-header');
+    var title = document.querySelector('.post-full-title');
+
+    var lastScrollY = window.scrollY;
+    var lastWindowHeight = window.innerHeight;
+    var lastDocumentHeight = $(document).height();
+    var ticking = false;
+
+    function onScroll() {
+        lastScrollY = window.scrollY;
+        requestTick();
+    }
+
+    function onResize() {
+        lastWindowHeight = window.innerHeight;
+        lastDocumentHeight = $(document).height();
+        requestTick();
+    }
+
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(update);
+        }
+        ticking = true;
+    }
+
+    function update() {
+        var trigger = title.getBoundingClientRect().top + window.scrollY;
+        var triggerOffset = title.offsetHeight + 35;
+        var progressMax = lastDocumentHeight - lastWindowHeight;
+
+        // show/hide floating header
+        if (lastScrollY >= trigger + triggerOffset) {
+            header.classList.add('floating-active');
+        } else {
+            header.classList.remove('floating-active');
+        }
+
+        progressBar.setAttribute('max', progressMax);
+        progressBar.setAttribute('value', lastScrollY);
+
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', onScroll, {passive: true});
+    window.addEventListener('resize', onResize, false);
+
+    update();
+
+});
+</script>
+
+
+    
+
+</body>
