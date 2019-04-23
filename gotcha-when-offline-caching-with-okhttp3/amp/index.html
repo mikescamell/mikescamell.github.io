@@ -7,8 +7,6 @@
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
 
-    <link rel="shortcut icon" href="../../favicon.ico">
-
     <meta name="description" content="When trying to do offline caching with OkHttp3 and Retrofit I encountered a small gotcha that prevented me from implementing it.">
     <link rel="shortcut icon" href="../../favicon.ico" type="image/x-icon">
     <link rel="canonical" href="../index.html">
@@ -17,7 +15,14 @@
     <meta property="og:site_name" content="Mike Scamell">
     <meta property="og:type" content="article">
     <meta property="og:title" content="Gotcha when offline caching with OkHttp3">
-    <meta property="og:description" content="When trying to do offline caching with OkHttp3 and Retrofit I encountered a small gotcha that prevented me from implementing it.">
+    <meta property="og:description" content="I recently was trying to use an offline cache with OkHttp
+[http://square.github.io/okhttp/]  to store some information. This is handy if
+the user goes offline and we want them to still see some information.
+
+I'd been following this great little tutorial by Annyce Davis
+[https://twitter.com/brwngrldev]  on Caster.io [http://caster.io/]. I have used
+a Retrofit [https://github.com/square/retrofit]  instance with offline caching
+before, but I had never actually set one up myself. In previous apps wh">
     <meta property="og:url" content="https://mikescamell.com/gotcha-when-offline-caching-with-okhttp3/">
     <meta property="og:image" content="https://mikescamell.com/content/images/2018/11/7spg5olfexc-roman-kraft--1-.jpg">
     <meta property="article:published_time" content="2017-01-22T12:06:00.000Z">
@@ -27,7 +32,14 @@
     
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Gotcha when offline caching with OkHttp3">
-    <meta name="twitter:description" content="When trying to do offline caching with OkHttp3 and Retrofit I encountered a small gotcha that prevented me from implementing it.">
+    <meta name="twitter:description" content="I recently was trying to use an offline cache with OkHttp
+[http://square.github.io/okhttp/]  to store some information. This is handy if
+the user goes offline and we want them to still see some information.
+
+I'd been following this great little tutorial by Annyce Davis
+[https://twitter.com/brwngrldev]  on Caster.io [http://caster.io/]. I have used
+a Retrofit [https://github.com/square/retrofit]  instance with offline caching
+before, but I had never actually set one up myself. In previous apps wh">
     <meta name="twitter:url" content="https://mikescamell.com/gotcha-when-offline-caching-with-okhttp3/">
     <meta name="twitter:image" content="https://mikescamell.com/content/images/2018/11/7spg5olfexc-roman-kraft--1-.jpg">
     <meta name="twitter:label1" content="Written by">
@@ -78,7 +90,7 @@
         "height": 574
     },
     "keywords": "androiddev, okhttp",
-    "description": "When trying to do offline caching with OkHttp3 and Retrofit I encountered a small gotcha that prevented me from implementing it.",
+    "description": "I recently was trying to use an offline cache with OkHttp\n[http://square.github.io/okhttp/]  to store some information. This is handy if\nthe user goes offline and we want them to still see some information.\n\nI&#x27;d been following this great little tutorial by Annyce Davis\n[https://twitter.com/brwngrldev]  on Caster.io [http://caster.io/]. I have used\na Retrofit [https://github.com/square/retrofit]  instance with offline caching\nbefore, but I had never actually set one up myself. In previous apps wh",
     "mainEntityOfPage": {
         "@type": "WebPage",
         "@id": "https://mikescamell.com/"
@@ -86,7 +98,7 @@
 }
     </script>
 
-    <meta name="generator" content="Ghost 2.6">
+    <meta name="generator" content="Ghost 2.21">
     <link rel="alternate" type="application/rss+xml" title="Mike Scamell" href="../../rss/index.html">
 
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic%7COpen+Sans:700,600,400">
@@ -154,7 +166,7 @@ Interceptor provideOfflineCacheInterceptor (final Application context) {
         </article>
     </main>
     <footer class="site-footer clearfix">
-        <section class="copyright"><a href="../../">Mike Scamell</a> © 2018</section>
+        <section class="copyright"><a href="../../">Mike Scamell</a> © 2019</section>
         <section class="poweredby">Proudly published with <a href="https://ghost.org">Ghost</a></section>
     </footer>
 </body>

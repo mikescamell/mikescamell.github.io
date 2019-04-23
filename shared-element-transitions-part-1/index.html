@@ -8,7 +8,7 @@
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" type="text/css" href="../assets/built/screen.css?v=2d30add7b8">
+    <link rel="stylesheet" type="text/css" href="../assets/built/screen.css?v=bd286ef966">
 
     <meta name="description" content="A tutorial to show how to implement simple Shared Element Transitions when going from Activity to Activity.">
     <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
@@ -19,7 +19,13 @@
     <meta property="og:site_name" content="Mike Scamell">
     <meta property="og:type" content="article">
     <meta property="og:title" content="How to use Shared Element Transitions with Activities">
-    <meta property="og:description" content="A tutorial to show how to implement simple Shared Element Transitions when going from Activity to Activity.">
+    <meta property="og:description" content="Shared Element Transitions are a great way of implementing Material motion
+[https://material.io/guidelines/motion/material-motion.html]  and adding some
+flair to your app. Shared element transitions help the user on their journey
+through your app by giving them a focal point as they go from screen to screen.
+They can make your app feel whole, rather than a bunch of separate screens
+slapped together. They shouldn't be abused though, in some case too many
+elements darting all over the screen may m">
     <meta property="og:url" content="https://mikescamell.com/shared-element-transitions-part-1/">
     <meta property="og:image" content="https://mikescamell.com/content/images/2018/11/activity_transistion_feature.png">
     <meta property="article:published_time" content="2017-01-31T14:00:00.000Z">
@@ -29,7 +35,13 @@
     
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="How to use Shared Element Transitions with Activities">
-    <meta name="twitter:description" content="A tutorial to show how to implement simple Shared Element Transitions when going from Activity to Activity.">
+    <meta name="twitter:description" content="Shared Element Transitions are a great way of implementing Material motion
+[https://material.io/guidelines/motion/material-motion.html]  and adding some
+flair to your app. Shared element transitions help the user on their journey
+through your app by giving them a focal point as they go from screen to screen.
+They can make your app feel whole, rather than a bunch of separate screens
+slapped together. They shouldn't be abused though, in some case too many
+elements darting all over the screen may m">
     <meta name="twitter:url" content="https://mikescamell.com/shared-element-transitions-part-1/">
     <meta name="twitter:image" content="https://mikescamell.com/content/images/2018/11/activity_transistion_feature.png">
     <meta name="twitter:label1" content="Written by">
@@ -80,7 +92,7 @@
         "height": 720
     },
     "keywords": "androiddev, sharedelementtranistions",
-    "description": "A tutorial to show how to implement simple Shared Element Transitions when going from Activity to Activity.",
+    "description": "Shared Element Transitions are a great way of implementing Material motion\n[https://material.io/guidelines/motion/material-motion.html]  and adding some\nflair to your app. Shared element transitions help the user on their journey\nthrough your app by giving them a focal point as they go from screen to screen.\nThey can make your app feel whole, rather than a bunch of separate screens\nslapped together. They shouldn&#x27;t be abused though, in some case too many\nelements darting all over the screen may m",
     "mainEntityOfPage": {
         "@type": "WebPage",
         "@id": "https://mikescamell.com/"
@@ -88,14 +100,14 @@
 }
     </script>
 
-    <script src="../public/ghost-sdk.js?v=2d30add7b8"></script>
+    <script src="../public/ghost-sdk.js?v=bd286ef966"></script>
 <script>
 ghost.init({
 	clientId: "ghost-frontend",
 	clientSecret: "07d57a1d866f"
 });
 </script>
-    <meta name="generator" content="Ghost 2.6">
+    <meta name="generator" content="Ghost 2.21">
     <link rel="alternate" type="application/rss+xml" title="Mike Scamell" href="../rss/index.html">
     <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-59786101-4"></script>
@@ -119,6 +131,12 @@ ghost.init({
         <nav class="site-nav">
     <div class="site-nav-left">
                 <a class="site-nav-logo" href="../">Mike Scamell</a>
+            <ul class="nav" role="menu">
+    <li class="nav-blog" role="menuitem"><a href="../">Blog</a></li>
+    <li class="nav-talks" role="menuitem"><a href="../talks/">Talks</a></li>
+    <li class="nav-github" role="menuitem"><a href="https://github.com/mikescamell">Github</a></li>
+</ul>
+
     </div>
     <div class="site-nav-right">
         <div class="social-links">
@@ -146,7 +164,13 @@ ghost.init({
                 <h1 class="post-full-title">Shared Element Transitions - Part 1: Activities</h1>
             </header>
 
-            <figure class="post-full-image" style="background-image: url(../content/images/2018/11/activity_transistion_feature.png)">
+            <figure class="post-full-image">
+                <img srcset="../content/images/size/w300/2018/11/activity_transistion_feature.png 300w,
+                           ../content/images/size/w600/2018/11/activity_transistion_feature.pngg 600w,
+                          ../content/images/size/w1000/2018/11/activity_transistion_feature.pngng 1000w,
+                         ../content/images/size/w2000/2018/11/activity_transistion_feature.pngpng 2000w" sizes="(max-width: 800px) 400px,
+                            (max-width: 1170px) 700px,
+                            1400px" src="../content/images/size/w2000/2018/11/activity_transistion_feature.png" alt="Shared Element Transitions - Part 1: Activities">
             </figure>
 
             <section class="post-full-content">
@@ -205,7 +229,7 @@ startActivity(intent, options.toBundle());
 <aside class="read-next outer">
     <div class="inner">
         <div class="read-next-feed">
-                <article class="read-next-card" style="background-image: url(https://static.ghost.org/v1.0.0/images/blog-cover.jpg)">
+                <article class="read-next-card">
                     <header class="read-next-card-header">
                         <small class="read-next-card-header-sitetitle">— Mike Scamell —</small>
                         <h3 class="read-next-card-header-title"><a href="../tag/androiddev/">androiddev</a></h3>
@@ -224,20 +248,30 @@ startActivity(intent, options.toBundle());
                     </footer>
                 </article>
 
-                <article class="post-card post tag-androiddev tag-sharedelementtranistions">
-        <a class="post-card-image-link" href="../shared-element-transitions-part-2/">
-            <div class="post-card-image" style="background-image: url(../content/images/2018/11/shared_element_part_2-4.png)"></div>
-        </a>
+                <article class="post-card post tag-androiddev tag-sharedelementtranistions ">
+
+    <a class="post-card-image-link" href="../shared-element-transitions-part-2/">
+        <img class="post-card-image" srcset="../content/images/size/w300/2018/11/shared_element_part_2-4.png 300w,
+                   ../content/images/size/w600/2018/11/shared_element_part_2-4.pngg 600w,
+                  ../content/images/size/w1000/2018/11/shared_element_part_2-4.pngng 1000w,
+                 ../content/images/size/w2000/2018/11/shared_element_part_2-4.pngpng 2000w" sizes="(max-width: 1000px) 400px, 700px" src="../content/images/size/w600/2018/11/shared_element_part_2-4.png" alt="Shared Element Transitions - Part 2: Fragments">
+    </a>
+
     <div class="post-card-content">
+
         <a class="post-card-content-link" href="../shared-element-transitions-part-2/">
+
             <header class="post-card-header">
                     <span class="post-card-tags">androiddev</span>
                 <h2 class="post-card-title">Shared Element Transitions - Part 2: Fragments</h2>
             </header>
+
             <section class="post-card-excerpt">
                 <p>In part 1 we learned what Shared Element Transitions are, how they work and a simple example using Activity to Activity.In part 2 we're going to learn a little more on how</p>
             </section>
+
         </a>
+
         <footer class="post-card-meta">
 
             <ul class="author-list">
@@ -247,30 +281,44 @@ startActivity(intent, options.toBundle());
                         Mike Scamell
                     </div>
 
-                        <a href="../author/mike/" class="static-avatar"><img class="author-profile-image" src="http://www.gravatar.com/avatar/2a389d50c33966a79a8cf6fe29c6080e?s=250&amp;d=mm&amp;r=x" alt="Mike Scamell"></a>
+                        <a href="../author/mike/" class="static-avatar">
+                            <img class="author-profile-image" src="http://www.gravatar.com/avatar/2a389d50c33966a79a8cf6fe29c6080e?s=250&amp;d=mm&amp;r=x" alt="Mike Scamell">
+                        </a>
                 </li>
             </ul>
 
             <span class="reading-time">4 min read</span>
 
         </footer>
+
     </div>
+
 </article>
 
-                <article class="post-card post tag-androiddev tag-okhttp">
-        <a class="post-card-image-link" href="../gotcha-when-offline-caching-with-okhttp3/">
-            <div class="post-card-image" style="background-image: url(../content/images/2018/11/7spg5olfexc-roman-kraft--1-.jpg)"></div>
-        </a>
+                <article class="post-card post tag-androiddev tag-okhttp ">
+
+    <a class="post-card-image-link" href="../gotcha-when-offline-caching-with-okhttp3/">
+        <img class="post-card-image" srcset="../content/images/size/w300/2018/11/7spg5olfexc-roman-kraft--1-.jpg 300w,
+                   ../content/images/size/w600/2018/11/7spg5olfexc-roman-kraft--1-.jpgg 600w,
+                  ../content/images/size/w1000/2018/11/7spg5olfexc-roman-kraft--1-.jpgpg 1000w,
+                 ../content/images/size/w2000/2018/11/7spg5olfexc-roman-kraft--1-.jpgjpg 2000w" sizes="(max-width: 1000px) 400px, 700px" src="../content/images/size/w600/2018/11/7spg5olfexc-roman-kraft--1-.jpg" alt="Gotcha when offline caching with OkHttp3">
+    </a>
+
     <div class="post-card-content">
+
         <a class="post-card-content-link" href="../gotcha-when-offline-caching-with-okhttp3/">
+
             <header class="post-card-header">
                     <span class="post-card-tags">androiddev</span>
                 <h2 class="post-card-title">Gotcha when offline caching with OkHttp3</h2>
             </header>
+
             <section class="post-card-excerpt">
                 <p>I recently was trying to use an offline cache with OkHttp to store some information. This is handy if the user goes offline and we want them to still see some information.I'd</p>
             </section>
+
         </a>
+
         <footer class="post-card-meta">
 
             <ul class="author-list">
@@ -280,14 +328,18 @@ startActivity(intent, options.toBundle());
                         Mike Scamell
                     </div>
 
-                        <a href="../author/mike/" class="static-avatar"><img class="author-profile-image" src="http://www.gravatar.com/avatar/2a389d50c33966a79a8cf6fe29c6080e?s=250&amp;d=mm&amp;r=x" alt="Mike Scamell"></a>
+                        <a href="../author/mike/" class="static-avatar">
+                            <img class="author-profile-image" src="http://www.gravatar.com/avatar/2a389d50c33966a79a8cf6fe29c6080e?s=250&amp;d=mm&amp;r=x" alt="Mike Scamell">
+                        </a>
                 </li>
             </ul>
 
             <span class="reading-time">2 min read</span>
 
         </footer>
+
     </div>
+
 </article>
 
         </div>
@@ -326,7 +378,7 @@ startActivity(intent, options.toBundle());
 
         <footer class="site-footer outer">
             <div class="site-footer-content inner">
-                <section class="copyright"><a href="../">Mike Scamell</a> © 2018</section>
+                <section class="copyright"><a href="../">Mike Scamell</a> © 2019</section>
                 <nav class="site-footer-nav">
                     <a href="../">Latest Posts</a>
                     
@@ -353,7 +405,7 @@ startActivity(intent, options.toBundle());
 
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous">
     </script>
-    <script type="text/javascript" src="../assets/built/jquery.fitvids.js?v=2d30add7b8"></script>
+    <script type="text/javascript" src="../assets/built/jquery.fitvids.js?v=bd286ef966"></script>
 
 
     <script>
