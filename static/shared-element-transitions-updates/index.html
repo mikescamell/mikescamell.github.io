@@ -1,0 +1,458 @@
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Shared Element Transitions - Updates</title>
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="../assets/built/screen.css?v=bd286ef966">
+
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="canonical" href="index.html">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <link rel="amphtml" href="amp/index.html">
+    
+    <meta property="og:site_name" content="Mike Scamell">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Shared Element Transitions - Updates">
+    <meta property="og:description" content="I didn't expect to get so many views on my Shared Element Transition blog
+series. But making it into Android Dev Digest
+[https://www.androiddevdigest.com/]  and Android Weekly
+[http://androidweekly.net/]  has increased the number of people looking at my
+work. I'm happy and proud of this achievement. With so many people looking it,
+it has also led to some clarifications and fixing of some mistakes. This has
+been great for me, I've learned a lot more about Shared Element Transitions,
+though obviou">
+    <meta property="og:url" content="https://mikescamell.com/shared-element-transitions-updates/">
+    <meta property="og:image" content="https://mikescamell.com/content/images/2018/11/Updates-1.png">
+    <meta property="article:published_time" content="2017-03-07T15:13:00.000Z">
+    <meta property="article:modified_time" content="2018-11-18T21:46:03.000Z">
+    <meta property="article:tag" content="androiddev">
+    <meta property="article:tag" content="sharedelementtranistions">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Shared Element Transitions - Updates">
+    <meta name="twitter:description" content="I didn't expect to get so many views on my Shared Element Transition blog
+series. But making it into Android Dev Digest
+[https://www.androiddevdigest.com/]  and Android Weekly
+[http://androidweekly.net/]  has increased the number of people looking at my
+work. I'm happy and proud of this achievement. With so many people looking it,
+it has also led to some clarifications and fixing of some mistakes. This has
+been great for me, I've learned a lot more about Shared Element Transitions,
+though obviou">
+    <meta name="twitter:url" content="https://mikescamell.com/shared-element-transitions-updates/">
+    <meta name="twitter:image" content="https://mikescamell.com/content/images/2018/11/Updates-1.png">
+    <meta name="twitter:label1" content="Written by">
+    <meta name="twitter:data1" content="Mike Scamell">
+    <meta name="twitter:label2" content="Filed under">
+    <meta name="twitter:data2" content="androiddev, sharedelementtranistions">
+    <meta name="twitter:site" content="@mikescamell">
+    <meta name="twitter:creator" content="@mikescamell">
+    <meta property="og:image:width" content="1280">
+    <meta property="og:image:height" content="600">
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Mike Scamell",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://mikescamell.com/favicon.ico",
+            "width": 60,
+            "height": 60
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Mike Scamell",
+        "image": {
+            "@type": "ImageObject",
+            "url": "//www.gravatar.com/avatar/2a389d50c33966a79a8cf6fe29c6080e?s=250&d=mm&r=x",
+            "width": 250,
+            "height": 250
+        },
+        "url": "https://mikescamell.com/author/mike/",
+        "sameAs": [
+            "https://twitter.com/mikescamell"
+        ]
+    },
+    "headline": "Shared Element Transitions - Updates",
+    "url": "https://mikescamell.com/shared-element-transitions-updates/",
+    "datePublished": "2017-03-07T15:13:00.000Z",
+    "dateModified": "2018-11-18T21:46:03.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://mikescamell.com/content/images/2018/11/Updates-1.png",
+        "width": 1280,
+        "height": 600
+    },
+    "keywords": "androiddev, sharedelementtranistions",
+    "description": "I didn&#x27;t expect to get so many views on my Shared Element Transition blog\nseries. But making it into Android Dev Digest\n[https://www.androiddevdigest.com/]  and Android Weekly\n[http://androidweekly.net/]  has increased the number of people looking at my\nwork. I&#x27;m happy and proud of this achievement. With so many people looking it,\nit has also led to some clarifications and fixing of some mistakes. This has\nbeen great for me, I&#x27;ve learned a lot more about Shared Element Transitions,\nthough obviou",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://mikescamell.com/"
+    }
+}
+    </script>
+
+    <script src="../public/ghost-sdk.js?v=bd286ef966"></script>
+<script>
+ghost.init({
+	clientId: "ghost-frontend",
+	clientSecret: "07d57a1d866f"
+});
+</script>
+    <meta name="generator" content="Ghost 2.21">
+    <link rel="alternate" type="application/rss+xml" title="Mike Scamell" href="../rss/index.html">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-59786101-4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-59786101-4');
+</script>
+
+</head>
+<body class="post-template tag-androiddev tag-sharedelementtranistions">
+
+    <div class="site-wrapper">
+
+        
+
+<header class="site-header outer">
+    <div class="inner">
+        <nav class="site-nav">
+    <div class="site-nav-left">
+                <a class="site-nav-logo" href="../">Mike Scamell</a>
+            <ul class="nav" role="menu">
+    <li class="nav-blog" role="menuitem"><a href="../">Blog</a></li>
+    <li class="nav-talks" role="menuitem"><a href="../talks/">Talks</a></li>
+    <li class="nav-github" role="menuitem"><a href="https://github.com/mikescamell">Github</a></li>
+</ul>
+
+    </div>
+    <div class="site-nav-right">
+        <div class="social-links">
+                <a class="social-link social-link-tw" href="https://twitter.com/mikescamell" title="Twitter" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"></path></svg>
+</a>
+        </div>
+            <a class="rss-button" href="https://feedly.com/i/subscription/feed/https://mikescamell.com/rss/" title="RSS" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24"><circle cx="6.18" cy="17.82" r="2.18"></circle><path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"></path></svg>
+</a>
+    </div>
+</nav>
+    </div>
+</header>
+
+
+<main id="site-main" class="site-main outer">
+    <div class="inner">
+
+        <article class="post-full post tag-androiddev tag-sharedelementtranistions ">
+
+            <header class="post-full-header">
+                <section class="post-full-meta">
+                    <time class="post-full-meta-date" datetime="2017-03-07">7 March 2017</time>
+                        <span class="date-divider">/</span> <a href="../tag/androiddev/">androiddev</a>
+                </section>
+                <h1 class="post-full-title">Shared Element Transitions - Updates</h1>
+            </header>
+
+            <figure class="post-full-image">
+                <img srcset="../content/images/size/w300/2018/11/Updates-1.png 300w,
+                           ../content/images/size/w600/2018/11/Updates-1.pngg 600w,
+                          ../content/images/size/w1000/2018/11/Updates-1.pngng 1000w,
+                         ../content/images/size/w2000/2018/11/Updates-1.pngpng 2000w" sizes="(max-width: 800px) 400px,
+                            (max-width: 1170px) 700px,
+                            1400px" src="../content/images/size/w2000/2018/11/Updates-1.png" alt="Shared Element Transitions - Updates">
+            </figure>
+
+            <section class="post-full-content">
+                <div class="post-content">
+                    <p>I didn't expect to get so many views on my Shared Element Transition blog series. But making it into <a href="https://www.androiddevdigest.com/">Android Dev Digest</a> and <a href="http://androidweekly.net/">Android Weekly</a> has increased the number of people looking at my work. I'm happy and proud of this achievement. With so many people looking it, it has also led to some clarifications and fixing of some mistakes. This has been great for me, I've learned a lot more about Shared Element Transitions, though obviously I never wanted this to be a result of misinformation from my posts.</p><p>For that reason, I've gone back through my posts and updated them accordingly, either correcting or clarifying them. Where necessary, some text has been struck through. Code wise, it would be best to look at the commits that I've made to see the changes. The commit messages should be explanation enough of why they have been changed. There's a <a href="https://github.com/mikescamell/shared-element-transitions/pull/5">pull request</a> which tidies a lot of code up such as moving animal names to <code>strings.xml</code> and removing unused attributes. When the code samples in the posts have been updated it will be merged in.</p><p>I'm going to add quick summaries of the changes of the posts here. Just so you don't have to go back all the way through to check.</p><h3 id="part-1-activities"><a href="http://mikescamell.com/shared-element-transitions-part-1/">Part 1 - Activities</a></h3><ul><li> Clarified that <code>transitionName</code> needs to be unique in the view hierarchy and not necessarily the same on the two views that the Shared Element Transition is taking place using. </li><li> Used <code>ViewCompat.getTransitionName</code> in code sample for creating <code>ActivityOptionsCompat</code> instead of using <code>getString</code>. </li></ul><h3 id="part-2-fragments"><a href="http://mikescamell.com/shared-element-transitions-part-2/">Part 2 - Fragments</a></h3><ul><li>Used <code>ViewCompat.getTransitionName</code> in code sample when creating a <code>FragmentTransaction</code> and explained that we use it as we know both <code>transitionName</code> are the same in both <code>Fragment</code> layouts.</li></ul><h3 id="part-3-picasso-glide"><a href="http://mikescamell.com/shared-element-transitions-part-3/">Part 3 - Picasso &amp; Glide</a></h3><ul><li>Used <code>ViewCompat.getTransitionName</code> in code samples for creating <code>ActivityOptionsCompat</code> instead of using <code>getString</code>.</li></ul><h3 id="part-4-recyclerview"><a href="http://mikescamell.com/shared-element-transitions-part-4-recyclerview/">Part 4 - RecyclerView</a></h3><ul><li> Used <code>ViewCompat.getTransitionName</code> on the passed through <code>ImageView</code> in code samples for creating <code>ActivityOptionsCompat</code> instead of using a <code>String</code> passed through as part of a parameter in the <code>AnimalItemClickListener</code>. This means simpler code. </li><li> Made note that the <code>transitionName</code> can be set on the <code>AnimalDetailActivity</code> or <code>AnimalDetailFragment</code> <code>ImageView</code> in XML, as a <code>transitionName</code> needs to only be unique for its view hierarchy. </li><li> Changed the code example of the <code>AnimalGalleryAdapter</code> to use the Animal name as a unique <code>transitionName</code> rather than using the position in the RecyclerView which could be volatile. It's better to use some unique identifier on your derived from your model. </li><li> I intend to update the ViewPager code example with a way to do the Shared Element Transition when returning to the list when you've moved in the ViewPager. If you'd like to be notified then watch this <a href="https://github.com/mikescamell/shared-element-transitions/issues/3">issue</a>. </li></ul><h3 id="part-5-fixing-flashing-blinking"><a href="http://mikescamell.com/shared-element-transitions-part-5/">Part 5 - Fixing Flashing/Blinking</a></h3><ul><li>Added a link to an explanation on the reason you can't exclude <code>Toolbar</code> from a transition by default.</li></ul><p>If you'd like clarification on any of the above then please post in the comments.</p><p>Lastly, you should definitely go watch this video from io16 on transitions, even if it's just the first 8 minutes!</p><figure class="kg-card kg-embed-card"><iframe width="480" height="270" src="https://www.youtube.com/embed/4L4fLrWDvAU?feature=oembed" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></figure><p>A big thanks to <a href="https://twitter.com/keyboardsurfer">Benjamin Weiss</a>, <a href="https://twitter.com/crafty">Nick Butcher</a>, <a href="https://plus.google.com/+ChristopheBeyls">Christophe Beyls</a>, Keith Smyth, David Cryer and <a href="https://github.com/jonathan-caryl">Jonathan Caryl</a> for keeping me on my toes. Much appreciated 🙂</p><p>And also a big thanks to everyone that's been reading them all, I hope I've been of some help and there will be more to come in the future.</p>
+                </div>
+            </section>
+
+
+            <footer class="post-full-footer">
+
+
+                    
+<section class="author-card">
+        <img class="author-profile-image" src="http://www.gravatar.com/avatar/2a389d50c33966a79a8cf6fe29c6080e?s=250&amp;d=mm&amp;r=x" alt="Mike Scamell">
+    <section class="author-card-content">
+        <h4 class="author-card-name"><a href="../author/mike/">Mike Scamell</a></h4>
+            <p>Read <a href="../author/mike/">more posts</a> by this author.</p>
+    </section>
+</section>
+<div class="post-full-footer-right">
+    <a class="author-card-button" href="../author/mike/">Read More</a>
+</div>
+
+
+            </footer>
+
+
+        </article>
+
+    </div>
+</main>
+
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+                <article class="read-next-card">
+                    <header class="read-next-card-header">
+                        <small class="read-next-card-header-sitetitle">— Mike Scamell —</small>
+                        <h3 class="read-next-card-header-title"><a href="../tag/androiddev/">androiddev</a></h3>
+                    </header>
+                    <div class="read-next-divider"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24"><path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"></path></svg>
+</div>
+                    <div class="read-next-card-content">
+                        <ul>
+                            <li><a href="../bottoms-up-bottomnavigationview-updates-in-the-material-design-design-support-library/">Bottoms Up! - BottomNavigationView Updates in the Material Components/Design Support Library</a></li>
+                            <li><a href="../a-sloths-guide-to-learning-kotlin/">A Sloth's guide to learning Kotlin</a></li>
+                            <li><a href="../shared-element-transitions-part-5/">Shared Element Transitions - Part 5:  Fixing Flashing/Blinking</a></li>
+                        </ul>
+                    </div>
+                    <footer class="read-next-card-footer">
+                        <a href="../tag/androiddev/">See all 9 posts →</a>
+                    </footer>
+                </article>
+
+                <article class="post-card post tag-androiddev tag-kotlin ">
+
+    <a class="post-card-image-link" href="../a-sloths-guide-to-learning-kotlin/">
+        <img class="post-card-image" srcset="../content/images/size/w300/2018/11/6322945345_2d629d3eb2_b.jpg 300w,
+                   ../content/images/size/w600/2018/11/6322945345_2d629d3eb2_b.jpgg 600w,
+                  ../content/images/size/w1000/2018/11/6322945345_2d629d3eb2_b.jpgpg 1000w,
+                 ../content/images/size/w2000/2018/11/6322945345_2d629d3eb2_b.jpgjpg 2000w" sizes="(max-width: 1000px) 400px, 700px" src="../content/images/size/w600/2018/11/6322945345_2d629d3eb2_b.jpg" alt="A Sloth's guide to learning Kotlin">
+    </a>
+
+    <div class="post-card-content">
+
+        <a class="post-card-content-link" href="../a-sloths-guide-to-learning-kotlin/">
+
+            <header class="post-card-header">
+                    <span class="post-card-tags">androiddev</span>
+                <h2 class="post-card-title">A Sloth's guide to learning Kotlin</h2>
+            </header>
+
+            <section class="post-card-excerpt">
+                <p>I'm starting to learn Kotlin. I'm pretty sure a large majority of all Android devs are also doing this right now. There are plenty of blog posts, videos, podcasts, talks etc. etc. being</p>
+            </section>
+
+        </a>
+
+        <footer class="post-card-meta">
+
+            <ul class="author-list">
+                <li class="author-list-item">
+
+                    <div class="author-name-tooltip">
+                        Mike Scamell
+                    </div>
+
+                        <a href="../author/mike/" class="static-avatar">
+                            <img class="author-profile-image" src="http://www.gravatar.com/avatar/2a389d50c33966a79a8cf6fe29c6080e?s=250&amp;d=mm&amp;r=x" alt="Mike Scamell">
+                        </a>
+                </li>
+            </ul>
+
+            <span class="reading-time">2 min read</span>
+
+        </footer>
+
+    </div>
+
+</article>
+
+                <article class="post-card post tag-sharedelementtranistions tag-androiddev ">
+
+    <a class="post-card-image-link" href="../shared-element-transitions-part-5/">
+        <img class="post-card-image" srcset="../content/images/size/w300/2018/11/flash_fix.png 300w,
+                   ../content/images/size/w600/2018/11/flash_fix.pngg 600w,
+                  ../content/images/size/w1000/2018/11/flash_fix.pngng 1000w,
+                 ../content/images/size/w2000/2018/11/flash_fix.pngpng 2000w" sizes="(max-width: 1000px) 400px, 700px" src="../content/images/size/w600/2018/11/flash_fix.png" alt="Shared Element Transitions - Part 5:  Fixing Flashing/Blinking">
+    </a>
+
+    <div class="post-card-content">
+
+        <a class="post-card-content-link" href="../shared-element-transitions-part-5/">
+
+            <header class="post-card-header">
+                    <span class="post-card-tags">sharedelementtranistions</span>
+                <h2 class="post-card-title">Shared Element Transitions - Part 5:  Fixing Flashing/Blinking</h2>
+            </header>
+
+            <section class="post-card-excerpt">
+                <p>In part 4 of the series we explored combining Shared Element Transitions with RecyclerView.In part 5 we're going to fix the white flashing or blinking that you may have seen throughout the</p>
+            </section>
+
+        </a>
+
+        <footer class="post-card-meta">
+
+            <ul class="author-list">
+                <li class="author-list-item">
+
+                    <div class="author-name-tooltip">
+                        Mike Scamell
+                    </div>
+
+                        <a href="../author/mike/" class="static-avatar">
+                            <img class="author-profile-image" src="http://www.gravatar.com/avatar/2a389d50c33966a79a8cf6fe29c6080e?s=250&amp;d=mm&amp;r=x" alt="Mike Scamell">
+                        </a>
+                </li>
+            </ul>
+
+            <span class="reading-time">4 min read</span>
+
+        </footer>
+
+    </div>
+
+</article>
+
+        </div>
+    </div>
+</aside>
+
+<div class="floating-header">
+    <div class="floating-header-logo">
+        <a href="../">
+            <span>Mike Scamell</span>
+        </a>
+    </div>
+    <span class="floating-header-divider">—</span>
+    <div class="floating-header-title">Shared Element Transitions - Updates</div>
+    <div class="floating-header-share">
+        <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24">
+    <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"></path>
+</svg>
+</div>
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=Shared%20Element%20Transitions%20-%20Updates&amp;url=https://mikescamell.com/shared-element-transitions-updates/" onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"></path></svg>
+        </a>
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https://mikescamell.com/shared-element-transitions-updates/" onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"></path></svg>
+        </a>
+    </div>
+    <progress id="reading-progress" class="progress" value="0">
+        <div class="progress-container">
+            <span class="progress-bar"></span>
+        </div>
+    </progress>
+</div>
+
+
+
+
+        <footer class="site-footer outer">
+            <div class="site-footer-content inner">
+                <section class="copyright"><a href="../">Mike Scamell</a> © 2019</section>
+                <nav class="site-footer-nav">
+                    <a href="../">Latest Posts</a>
+                    
+                    <a href="https://twitter.com/mikescamell" target="_blank" rel="noopener">Twitter</a>
+                    <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a>
+                </nav>
+            </div>
+        </footer>
+
+    </div>
+
+
+    <script>
+        var images = document.querySelectorAll('.kg-gallery-image img');
+        images.forEach(function (image) {
+            var container = image.closest('.kg-gallery-image');
+            var width = image.attributes.width.value;
+            var height = image.attributes.height.value;
+            var ratio = width / height;
+            container.style.flex = ratio + ' 1 0%';
+        })
+    </script>
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous">
+    </script>
+    <script type="text/javascript" src="../assets/built/jquery.fitvids.js?v=bd286ef966"></script>
+
+
+    <script>
+
+// NOTE: Scroll performance is poor in Safari
+// - this appears to be due to the events firing much more slowly in Safari.
+//   Dropping the scroll event and using only a raf loop results in smoother
+//   scrolling but continuous processing even when not scrolling
+$(document).ready(function () {
+    // Start fitVids
+    var $postContent = $(".post-full-content");
+    $postContent.fitVids();
+    // End fitVids
+
+    var progressBar = document.querySelector('#reading-progress');
+    var header = document.querySelector('.floating-header');
+    var title = document.querySelector('.post-full-title');
+
+    var lastScrollY = window.scrollY;
+    var lastWindowHeight = window.innerHeight;
+    var lastDocumentHeight = $(document).height();
+    var ticking = false;
+
+    function onScroll() {
+        lastScrollY = window.scrollY;
+        requestTick();
+    }
+
+    function onResize() {
+        lastWindowHeight = window.innerHeight;
+        lastDocumentHeight = $(document).height();
+        requestTick();
+    }
+
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(update);
+        }
+        ticking = true;
+    }
+
+    function update() {
+        var trigger = title.getBoundingClientRect().top + window.scrollY;
+        var triggerOffset = title.offsetHeight + 35;
+        var progressMax = lastDocumentHeight - lastWindowHeight;
+
+        // show/hide floating header
+        if (lastScrollY >= trigger + triggerOffset) {
+            header.classList.add('floating-active');
+        } else {
+            header.classList.remove('floating-active');
+        }
+
+        progressBar.setAttribute('max', progressMax);
+        progressBar.setAttribute('value', lastScrollY);
+
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', onScroll, {passive: true});
+    window.addEventListener('resize', onResize, false);
+
+    update();
+
+});
+</script>
+
+
+    
+
+</body>

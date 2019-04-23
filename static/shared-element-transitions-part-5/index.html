@@ -1,0 +1,499 @@
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Shared Element Transitions - Fixing Flashing/Blinking</title>
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="../assets/built/screen.css?v=bd286ef966">
+
+    <meta name="description" content="A tutorial to show how to fix the flashing/blinking when using Shared Element Transitions on Android.">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="canonical" href="index.html">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <link rel="amphtml" href="amp/index.html">
+    
+    <meta property="og:site_name" content="Mike Scamell">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Shared Element Transitions - Fixing Flashing/Blinking">
+    <meta property="og:description" content="In part 4
+[http://mikescamell.com/shared-element-transitions-part-4-recyclerview/]  of the
+series we explored combining Shared Element Transitions with RecyclerView.
+
+In part 5 we're going to fix the white flashing or blinking that you may have
+seen throughout the series during the transition from screen to screen.
+
+This part was going to be longer but I was slowed down by what I think is a bug
+[https://code.google.com/p/android/issues/detail?id=235038&amp;thanks=235038&amp;ts=1488123707] 
+ that I found">
+    <meta property="og:url" content="https://mikescamell.com/shared-element-transitions-part-5/">
+    <meta property="og:image" content="https://mikescamell.com/content/images/2018/11/flash_fix.png">
+    <meta property="article:published_time" content="2017-02-28T12:38:00.000Z">
+    <meta property="article:modified_time" content="2018-11-18T21:45:30.000Z">
+    <meta property="article:tag" content="sharedelementtranistions">
+    <meta property="article:tag" content="androiddev">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Shared Element Transitions - Fixing Flashing/Blinking">
+    <meta name="twitter:description" content="In part 4
+[http://mikescamell.com/shared-element-transitions-part-4-recyclerview/]  of the
+series we explored combining Shared Element Transitions with RecyclerView.
+
+In part 5 we're going to fix the white flashing or blinking that you may have
+seen throughout the series during the transition from screen to screen.
+
+This part was going to be longer but I was slowed down by what I think is a bug
+[https://code.google.com/p/android/issues/detail?id=235038&amp;thanks=235038&amp;ts=1488123707] 
+ that I found">
+    <meta name="twitter:url" content="https://mikescamell.com/shared-element-transitions-part-5/">
+    <meta name="twitter:image" content="https://mikescamell.com/content/images/2018/11/flash_fix.png">
+    <meta name="twitter:label1" content="Written by">
+    <meta name="twitter:data1" content="Mike Scamell">
+    <meta name="twitter:label2" content="Filed under">
+    <meta name="twitter:data2" content="sharedelementtranistions, androiddev">
+    <meta name="twitter:site" content="@mikescamell">
+    <meta name="twitter:creator" content="@mikescamell">
+    <meta property="og:image:width" content="1280">
+    <meta property="og:image:height" content="600">
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Mike Scamell",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://mikescamell.com/favicon.ico",
+            "width": 60,
+            "height": 60
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Mike Scamell",
+        "image": {
+            "@type": "ImageObject",
+            "url": "//www.gravatar.com/avatar/2a389d50c33966a79a8cf6fe29c6080e?s=250&d=mm&r=x",
+            "width": 250,
+            "height": 250
+        },
+        "url": "https://mikescamell.com/author/mike/",
+        "sameAs": [
+            "https://twitter.com/mikescamell"
+        ]
+    },
+    "headline": "Shared Element Transitions - Fixing Flashing/Blinking",
+    "url": "https://mikescamell.com/shared-element-transitions-part-5/",
+    "datePublished": "2017-02-28T12:38:00.000Z",
+    "dateModified": "2018-11-18T21:45:30.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://mikescamell.com/content/images/2018/11/flash_fix.png",
+        "width": 1280,
+        "height": 600
+    },
+    "keywords": "sharedelementtranistions, androiddev",
+    "description": "In part 4\n[http://mikescamell.com/shared-element-transitions-part-4-recyclerview/]  of the\nseries we explored combining Shared Element Transitions with RecyclerView.\n\nIn part 5 we&#x27;re going to fix the white flashing or blinking that you may have\nseen throughout the series during the transition from screen to screen.\n\nThis part was going to be longer but I was slowed down by what I think is a bug\n[https://code.google.com/p/android/issues/detail?id&#x3D;235038&amp;thanks&#x3D;235038&amp;ts&#x3D;1488123707] \n that I found",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://mikescamell.com/"
+    }
+}
+    </script>
+
+    <script src="../public/ghost-sdk.js?v=bd286ef966"></script>
+<script>
+ghost.init({
+	clientId: "ghost-frontend",
+	clientSecret: "07d57a1d866f"
+});
+</script>
+    <meta name="generator" content="Ghost 2.21">
+    <link rel="alternate" type="application/rss+xml" title="Mike Scamell" href="../rss/index.html">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-59786101-4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-59786101-4');
+</script>
+
+</head>
+<body class="post-template tag-sharedelementtranistions tag-androiddev">
+
+    <div class="site-wrapper">
+
+        
+
+<header class="site-header outer">
+    <div class="inner">
+        <nav class="site-nav">
+    <div class="site-nav-left">
+                <a class="site-nav-logo" href="../">Mike Scamell</a>
+            <ul class="nav" role="menu">
+    <li class="nav-blog" role="menuitem"><a href="../">Blog</a></li>
+    <li class="nav-talks" role="menuitem"><a href="../talks/">Talks</a></li>
+    <li class="nav-github" role="menuitem"><a href="https://github.com/mikescamell">Github</a></li>
+</ul>
+
+    </div>
+    <div class="site-nav-right">
+        <div class="social-links">
+                <a class="social-link social-link-tw" href="https://twitter.com/mikescamell" title="Twitter" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"></path></svg>
+</a>
+        </div>
+            <a class="rss-button" href="https://feedly.com/i/subscription/feed/https://mikescamell.com/rss/" title="RSS" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24"><circle cx="6.18" cy="17.82" r="2.18"></circle><path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"></path></svg>
+</a>
+    </div>
+</nav>
+    </div>
+</header>
+
+
+<main id="site-main" class="site-main outer">
+    <div class="inner">
+
+        <article class="post-full post tag-sharedelementtranistions tag-androiddev ">
+
+            <header class="post-full-header">
+                <section class="post-full-meta">
+                    <time class="post-full-meta-date" datetime="2017-02-28">28 February 2017</time>
+                        <span class="date-divider">/</span> <a href="../tag/sharedelementtranistions/">sharedelementtranistions</a>
+                </section>
+                <h1 class="post-full-title">Shared Element Transitions - Part 5:  Fixing Flashing/Blinking</h1>
+            </header>
+
+            <figure class="post-full-image">
+                <img srcset="../content/images/size/w300/2018/11/flash_fix.png 300w,
+                           ../content/images/size/w600/2018/11/flash_fix.pngg 600w,
+                          ../content/images/size/w1000/2018/11/flash_fix.pngng 1000w,
+                         ../content/images/size/w2000/2018/11/flash_fix.pngpng 2000w" sizes="(max-width: 800px) 400px,
+                            (max-width: 1170px) 700px,
+                            1400px" src="../content/images/size/w2000/2018/11/flash_fix.png" alt="Shared Element Transitions - Part 5:  Fixing Flashing/Blinking">
+            </figure>
+
+            <section class="post-full-content">
+                <div class="post-content">
+                    <p>In <a href="http://mikescamell.com/shared-element-transitions-part-4-recyclerview/">part 4</a> of the series we explored combining Shared Element Transitions with <code>RecyclerView</code>.</p><p>In part 5 we're going to fix the white flashing or blinking that you may have seen throughout the series during the transition from screen to screen.</p><p>This part was going to be longer but I was slowed down by what I think is a <a href="https://code.google.com/p/android/issues/detail?id=235038&amp;thanks=235038&amp;ts=1488123707">bug</a> that I found on my Nexus 6P on 7.1.2. My advice, therefore, for this part, is to make sure the device you're using is NOT on 7.1.2. Just in case you run into the same issues I did.</p><h2 id="going-back-to-the-start">Going back to the start</h2><p>"What flashing and blinking?" I might hear you say. Take a look at this video and pay attention to the status bar, navigation bar and action bar.</p><figure class="kg-card kg-embed-card"><iframe width="459" height="344" src="https://www.youtube.com/embed/WXVywnBSjAo?feature=oembed" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></figure><p>In <a href="http://mikescamell.com/shared-element-transitions-part-1/">part 1</a> I mentioned that Shared Element Transitions take part in the windows <code>ViewOverlay</code>. This <code>ViewOverlay</code> sits on top of everything including the status bar and the navigation bar. It is also where the Shared Element Transitions take place. So when we do our Shared Element Transition, the first and second window are animating (typically a fade) and that's why we get the white flashing; the alpha is animating out on the first screen and animating in on the second screen. So how do we get around this? We need to exclude the views we don't want animating during the Shared Element Transition by excluding them from the window transition.</p><p>For the next few examples I've added in a <code>Toolbar</code> as I believe a lot of you will be using one. It's something else that needs to be taken into consideration as well.</p><h2 id="fixing-flashing-with-activities">Fixing Flashing with Activities</h2><h3 id="programmatic">Programmatic</h3><p>Our <code>ProgrammaticActivityA</code> is setup exactly the same way that the other Activity example have been  in regards to Shared Element Transitions so head back and <a href="http://mikescamell.com/shared-element-transitions-part-3/">take a look</a> if you haven't already. The key part is this next piece of code:</p><pre><code>@Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_flash_fix_a);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        if (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.LOLLIPOP) {
+            Fade fade = new Fade();
+            fade.excludeTarget(R.id.appBar, true);
+            fade.excludeTarget(android.R.id.statusBarBackground, true);
+            fade.excludeTarget(android.R.id.navigationBarBackground, true);
+
+            getWindow().setEnterTransition(fade);
+            getWindow().setExitTransition(fade);
+        }
+
+        //Button setup
+    }
+</code></pre><p>Line 8 we do our obligatory check to make sure we're on 21+. Line 9 we create a Fade <code>Transition</code> (Note it can be any type of <code>Transition</code> you like). It's this <code>Transition</code> where we're going to add the views that we want to exclude. First up on line 10 is the <code>AppBarLayout</code> that contains our <code>Toolbar</code>. We call <code>excludeTarget</code> on the <code>Fade</code> which can take a <code>String</code>, <code>View</code>, <code>Class</code> or the <code>id</code> of the view as it's first parameter. We're going to be using the <code>id</code>. If you add the <code>id</code> of the <code>Toolbar</code> instead of the <code>AppBarLayout</code> then it won't work. See Nick Butcher's <a href="http://mikescamell.com/shared-element-transitions-part-5/#comment-3180908415">comment</a> for why this is the case. The second parameter it takes is a <code>boolean</code> which sets whether we want to exclude it or not. We're going to be setting this to <code>true</code> on all our calls as we want to exclude them.</p><p>Line 11 and 12 we add the id for the <code>statusBarBackground</code> and the <code>navigationBarBackground</code> by accessing the <code>android</code> resources. Again, we set the second parameter to <code>true</code>.</p><p>Finally we set the <code>Fade</code> as the enter transition and exit transition for our <code>ProgrammaticActivityA</code>.</p><p><code>ProgrammaticActivityB</code> has the exact same code as above, so I won't repeat it here. But you can go see this for yourself in the source code. And that's all that's needed when doing it programmatically.</p><h2 id="xml">XML</h2><p>We can also solve this problem by creating a transition in XML and applying that through a theme to our activities. So first we need to add a<code>Transition</code> into a <code>transition</code> package in our resources directory.</p><pre><code>&lt;fade xmlns:android="http://schemas.android.com/apk/res/android"&gt;
+    &lt;targets&gt;
+        &lt;target android:excludeId="@android:id/statusBarBackground" /&gt;
+        &lt;target android:excludeId="@android:id/navigationBarBackground" /&gt;
+        &lt;target android:excludeId="@id/appBar" /&gt;
+    &lt;/targets&gt;
+&lt;/fade&gt;
+</code></pre><p>Here in this <code>default_window_fade</code> XML we have a <code>Fade</code> <code>Transition</code>. Within this we add our targets for exclusion, much like the above programmatic example.</p><p>Next we need to create a theme to apply the <code>default_window_fade</code> to our <code>Activity</code> themes. In the <code>styles.xml</code> we add the following:</p><pre><code>    &lt;style name="AppTheme.NoActionBar.DefaultActivity"&gt;
+        &lt;item name="android:windowEnterTransition"&gt;@transition/default_window_fade&lt;/item&gt;
+        &lt;item name="android:windowExitTransition"&gt;@transition/default_window_fade&lt;/item&gt;
+    &lt;/style&gt;
+</code></pre><p>Here we're simply setting the enter and exit <code>Transition</code> of the window to be our <code>default_window_fade</code>.</p><p>Lastly we need to set this as the theme for our <code>FlashFixActivityA</code> and <code>FlashFixActivityB</code> in the manifest.</p><pre><code>        &lt;activity
+            android:name=".flash_fix.xml_activity.FlashFixXmlActivityA"
+            android:theme="@style/AppTheme.NoActionBar.DefaultActivity" /&gt;
+        &lt;activity
+            android:name=".flash_fix.xml_activity.FlashFixXmlActivityB"
+            android:theme="@style/AppTheme.NoActionBar.DefaultActivity" /&gt;
+</code></pre><p>And that's all that's needed. Again, the code for the <code>Activity</code> looks identical to those used in a previous <a href="http://mikescamell.com/shared-element-transitions-part-3/">post</a>.</p><p><code>Fragment</code> doesn't seem to suffer the same issues as <code>Activity</code> when it come to the blinking and flashing, at least with the status and navigation bar. I believe this is likely due to it's <code>ViewOverlay</code> being confined to the content area of the holding <code>Activity</code>. If this does occur for you please let me know and provide an example. I believe that if it is a problem for you it may be remedied by supplying an XML <code>Transition</code> like above as part of the <code>FragmentTransaction</code></p><p>With all this done the status bar and navigation bar should no longer flash/blink!</p><figure class="kg-card kg-embed-card"><iframe width="459" height="344" src="https://www.youtube.com/embed/qIlV7MHkaNI?feature=oembed" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></figure><p>Source code can be found <a href="https://github.com/mikescamell/shared-element-transitions">here</a> under the <code>flash_fix</code> package.</p><p>This is obviously applicable to the <code>RecyclerView</code> examples in <a href="http://mikescamell.com/shared-element-transitions-part-4-recyclerview/">part 4</a>, but I'll leave it as an exercise to you. It should be easy to implement with the above code.</p><p>I want to move into more complex examples, so my next post may not be out for a few weeks. If there's anything you want to see specifically and you think it can be of use to a lot of people then please let me know.</p>
+                </div>
+            </section>
+
+
+            <footer class="post-full-footer">
+
+
+                    
+<section class="author-card">
+        <img class="author-profile-image" src="http://www.gravatar.com/avatar/2a389d50c33966a79a8cf6fe29c6080e?s=250&amp;d=mm&amp;r=x" alt="Mike Scamell">
+    <section class="author-card-content">
+        <h4 class="author-card-name"><a href="../author/mike/">Mike Scamell</a></h4>
+            <p>Read <a href="../author/mike/">more posts</a> by this author.</p>
+    </section>
+</section>
+<div class="post-full-footer-right">
+    <a class="author-card-button" href="../author/mike/">Read More</a>
+</div>
+
+
+            </footer>
+
+
+        </article>
+
+    </div>
+</main>
+
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+                <article class="read-next-card">
+                    <header class="read-next-card-header">
+                        <small class="read-next-card-header-sitetitle">— Mike Scamell —</small>
+                        <h3 class="read-next-card-header-title"><a href="../tag/sharedelementtranistions/">sharedelementtranistions</a></h3>
+                    </header>
+                    <div class="read-next-divider"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24"><path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"></path></svg>
+</div>
+                    <div class="read-next-card-content">
+                        <ul>
+                            <li><a href="../shared-element-transitions-updates/">Shared Element Transitions - Updates</a></li>
+                            <li><a href="../shared-element-transitions-part-4-recyclerview/">Shared Element Transitions - Part 4: RecyclerView</a></li>
+                            <li><a href="../shared-element-transitions-part-3/">Shared Element Transitions - Part 3: Picasso &amp; Glide</a></li>
+                        </ul>
+                    </div>
+                    <footer class="read-next-card-footer">
+                        <a href="../tag/sharedelementtranistions/">See all 5 posts →</a>
+                    </footer>
+                </article>
+
+                <article class="post-card post tag-androiddev tag-sharedelementtranistions ">
+
+    <a class="post-card-image-link" href="../shared-element-transitions-updates/">
+        <img class="post-card-image" srcset="../content/images/size/w300/2018/11/Updates-1.png 300w,
+                   ../content/images/size/w600/2018/11/Updates-1.pngg 600w,
+                  ../content/images/size/w1000/2018/11/Updates-1.pngng 1000w,
+                 ../content/images/size/w2000/2018/11/Updates-1.pngpng 2000w" sizes="(max-width: 1000px) 400px, 700px" src="../content/images/size/w600/2018/11/Updates-1.png" alt="Shared Element Transitions - Updates">
+    </a>
+
+    <div class="post-card-content">
+
+        <a class="post-card-content-link" href="../shared-element-transitions-updates/">
+
+            <header class="post-card-header">
+                    <span class="post-card-tags">androiddev</span>
+                <h2 class="post-card-title">Shared Element Transitions - Updates</h2>
+            </header>
+
+            <section class="post-card-excerpt">
+                <p>I didn't expect to get so many views on my Shared Element Transition blog series. But making it into Android Dev Digest and Android Weekly has increased the number of people looking at</p>
+            </section>
+
+        </a>
+
+        <footer class="post-card-meta">
+
+            <ul class="author-list">
+                <li class="author-list-item">
+
+                    <div class="author-name-tooltip">
+                        Mike Scamell
+                    </div>
+
+                        <a href="../author/mike/" class="static-avatar">
+                            <img class="author-profile-image" src="http://www.gravatar.com/avatar/2a389d50c33966a79a8cf6fe29c6080e?s=250&amp;d=mm&amp;r=x" alt="Mike Scamell">
+                        </a>
+                </li>
+            </ul>
+
+            <span class="reading-time">2 min read</span>
+
+        </footer>
+
+    </div>
+
+</article>
+
+                <article class="post-card post tag-androiddev tag-sharedelementtranistions ">
+
+    <a class="post-card-image-link" href="../shared-element-transitions-part-4-recyclerview/">
+        <img class="post-card-image" srcset="../content/images/size/w300/2018/11/recycler_view_feature-2.png 300w,
+                   ../content/images/size/w600/2018/11/recycler_view_feature-2.pngg 600w,
+                  ../content/images/size/w1000/2018/11/recycler_view_feature-2.pngng 1000w,
+                 ../content/images/size/w2000/2018/11/recycler_view_feature-2.pngpng 2000w" sizes="(max-width: 1000px) 400px, 700px" src="../content/images/size/w600/2018/11/recycler_view_feature-2.png" alt="Shared Element Transitions - Part 4: RecyclerView">
+    </a>
+
+    <div class="post-card-content">
+
+        <a class="post-card-content-link" href="../shared-element-transitions-part-4-recyclerview/">
+
+            <header class="post-card-header">
+                    <span class="post-card-tags">androiddev</span>
+                <h2 class="post-card-title">Shared Element Transitions - Part 4: RecyclerView</h2>
+            </header>
+
+            <section class="post-card-excerpt">
+                <p>In part 3 of the series we looked at how to implement Shared Element Transitions when using Picasso or Glide.In part 4 we're going to look at implementing them with RecyclerView, a</p>
+            </section>
+
+        </a>
+
+        <footer class="post-card-meta">
+
+            <ul class="author-list">
+                <li class="author-list-item">
+
+                    <div class="author-name-tooltip">
+                        Mike Scamell
+                    </div>
+
+                        <a href="../author/mike/" class="static-avatar">
+                            <img class="author-profile-image" src="http://www.gravatar.com/avatar/2a389d50c33966a79a8cf6fe29c6080e?s=250&amp;d=mm&amp;r=x" alt="Mike Scamell">
+                        </a>
+                </li>
+            </ul>
+
+            <span class="reading-time">7 min read</span>
+
+        </footer>
+
+    </div>
+
+</article>
+
+        </div>
+    </div>
+</aside>
+
+<div class="floating-header">
+    <div class="floating-header-logo">
+        <a href="../">
+            <span>Mike Scamell</span>
+        </a>
+    </div>
+    <span class="floating-header-divider">—</span>
+    <div class="floating-header-title">Shared Element Transitions - Part 5:  Fixing Flashing/Blinking</div>
+    <div class="floating-header-share">
+        <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24">
+    <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"></path>
+</svg>
+</div>
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=Shared%20Element%20Transitions%20-%20Part%205%3A%20%20Fixing%20Flashing%2FBlinking&amp;url=https://mikescamell.com/shared-element-transitions-part-5/" onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"></path></svg>
+        </a>
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https://mikescamell.com/shared-element-transitions-part-5/" onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"></path></svg>
+        </a>
+    </div>
+    <progress id="reading-progress" class="progress" value="0">
+        <div class="progress-container">
+            <span class="progress-bar"></span>
+        </div>
+    </progress>
+</div>
+
+
+
+
+        <footer class="site-footer outer">
+            <div class="site-footer-content inner">
+                <section class="copyright"><a href="../">Mike Scamell</a> © 2019</section>
+                <nav class="site-footer-nav">
+                    <a href="../">Latest Posts</a>
+                    
+                    <a href="https://twitter.com/mikescamell" target="_blank" rel="noopener">Twitter</a>
+                    <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a>
+                </nav>
+            </div>
+        </footer>
+
+    </div>
+
+
+    <script>
+        var images = document.querySelectorAll('.kg-gallery-image img');
+        images.forEach(function (image) {
+            var container = image.closest('.kg-gallery-image');
+            var width = image.attributes.width.value;
+            var height = image.attributes.height.value;
+            var ratio = width / height;
+            container.style.flex = ratio + ' 1 0%';
+        })
+    </script>
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous">
+    </script>
+    <script type="text/javascript" src="../assets/built/jquery.fitvids.js?v=bd286ef966"></script>
+
+
+    <script>
+
+// NOTE: Scroll performance is poor in Safari
+// - this appears to be due to the events firing much more slowly in Safari.
+//   Dropping the scroll event and using only a raf loop results in smoother
+//   scrolling but continuous processing even when not scrolling
+$(document).ready(function () {
+    // Start fitVids
+    var $postContent = $(".post-full-content");
+    $postContent.fitVids();
+    // End fitVids
+
+    var progressBar = document.querySelector('#reading-progress');
+    var header = document.querySelector('.floating-header');
+    var title = document.querySelector('.post-full-title');
+
+    var lastScrollY = window.scrollY;
+    var lastWindowHeight = window.innerHeight;
+    var lastDocumentHeight = $(document).height();
+    var ticking = false;
+
+    function onScroll() {
+        lastScrollY = window.scrollY;
+        requestTick();
+    }
+
+    function onResize() {
+        lastWindowHeight = window.innerHeight;
+        lastDocumentHeight = $(document).height();
+        requestTick();
+    }
+
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(update);
+        }
+        ticking = true;
+    }
+
+    function update() {
+        var trigger = title.getBoundingClientRect().top + window.scrollY;
+        var triggerOffset = title.offsetHeight + 35;
+        var progressMax = lastDocumentHeight - lastWindowHeight;
+
+        // show/hide floating header
+        if (lastScrollY >= trigger + triggerOffset) {
+            header.classList.add('floating-active');
+        } else {
+            header.classList.remove('floating-active');
+        }
+
+        progressBar.setAttribute('max', progressMax);
+        progressBar.setAttribute('value', lastScrollY);
+
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', onScroll, {passive: true});
+    window.addEventListener('resize', onResize, false);
+
+    update();
+
+});
+</script>
+
+
+    
+
+</body>
