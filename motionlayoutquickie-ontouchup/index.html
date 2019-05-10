@@ -32,7 +32,7 @@ checkout these
     <meta property="og:url" content="http://localhost:2368/motionlayoutquickie-ontouchup/">
     <meta property="og:image" content="http://localhost:2368/content/images/2019/05/MotionLayout-Quickie---onTouchUp-3.png">
     <meta property="article:published_time" content="2019-05-09T20:00:00.000Z">
-    <meta property="article:modified_time" content="2019-05-10T06:40:56.000Z">
+    <meta property="article:modified_time" content="2019-05-10T06:45:01.000Z">
     <meta property="article:tag" content="motionlayout">
     <meta property="article:tag" content="androiddev">
     <meta property="article:tag" content="constraintlayout">
@@ -91,7 +91,7 @@ checkout these
     "headline": "MotionLayout Quickie - onTouchUp",
     "url": "http://localhost:2368/motionlayoutquickie-ontouchup/",
     "datePublished": "2019-05-09T20:00:00.000Z",
-    "dateModified": "2019-05-10T06:40:56.000Z",
+    "dateModified": "2019-05-10T06:45:01.000Z",
     "image": {
         "@type": "ImageObject",
         "url": "http://localhost:2368/content/images/2019/05/MotionLayout-Quickie---onTouchUp-3.png",
@@ -182,7 +182,7 @@ ghost.init({
 
             <section class="post-full-content">
                 <div class="post-content">
-                    <p>ConstraintLayout has hit beta1! 🎉 And with this new update we have a new <code>onTouchUp</code> for the <code>OnSwipe</code> handler in a <code>Transition</code>. </p><p>So, I've decided to write this "MotionLayout Quickie" and show the different effects that each one has. If you don't know what a quickie is then go ask your parents, if you do then why are you reading this post? </p><p>I assume you have some knowledge of <code>MotionLayout</code> already. If you don't then checkout <a href="https://medium.com/google-developers/introduction-to-motionlayout-part-i-29208674b10d">these</a> posts from Nicolas Roard.</p><p><code>onTouchUp</code> allows us to set how we want our MotionLayout transition to play out after we've finished swiping. There are 6 types. In our example we'll be swiping up and down, so that's what I'll be using as we go along. Apply it whatever direction you like in your MotionLayout. All we need to do is our add the <code>onTouchUp</code> attribute to the <code>OnSwipe</code> handler in our MotionScene:</p><!--kg-card-begin: code--><pre><code>    &lt;Transition
+                    <p>ConstraintLayout has hit beta1! 🎉 And with this new update we have a new <code>onTouchUp</code> for the <code>OnSwipe</code> handler in a <code>Transition</code>. </p><p>So, I've decided to write this "MotionLayout Quickie" and show the different effects that each one has. If you don't know what a quickie is then go ask your parents, if you do then why are you reading this post? </p><p>I assume you have some knowledge of <code>MotionLayout</code> already. If you don't then checkout <a href="https://medium.com/google-developers/introduction-to-motionlayout-part-i-29208674b10d">these</a> posts from Nicolas Roard.</p><p><code>onTouchUp</code> allows us to set how we want our MotionLayout transition to play out after we've finished swiping. There are 6 types. In our example we'll be swiping up and down, so that's what I'll be using as we go along. Apply it whatever direction you like in your MotionLayout. All we need to do is add the <code>onTouchUp</code> attribute to the <code>OnSwipe</code> handler in our MotionScene:</p><!--kg-card-begin: code--><pre><code>    &lt;Transition
         android:id="@+id/startToEnd"
         app:constraintSetEnd="@+id/end"
         app:constraintSetStart="@+id/start"&gt;
