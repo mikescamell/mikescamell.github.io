@@ -32,7 +32,7 @@ checkout these
     <meta property="og:url" content="http://localhost:2368/motionlayoutquickie-ontouchup/">
     <meta property="og:image" content="http://localhost:2368/content/images/2019/05/MotionLayout-Quickie---onTouchUp.jpg">
     <meta property="article:published_time" content="2019-05-09T20:00:00.000Z">
-    <meta property="article:modified_time" content="2019-05-10T06:47:49.000Z">
+    <meta property="article:modified_time" content="2019-05-10T07:03:26.000Z">
     <meta property="article:tag" content="motionlayout">
     <meta property="article:tag" content="androiddev">
     <meta property="article:tag" content="constraintlayout">
@@ -91,7 +91,7 @@ checkout these
     "headline": "MotionLayout Quickie - onTouchUp",
     "url": "http://localhost:2368/motionlayoutquickie-ontouchup/",
     "datePublished": "2019-05-09T20:00:00.000Z",
-    "dateModified": "2019-05-10T06:47:49.000Z",
+    "dateModified": "2019-05-10T07:03:26.000Z",
     "image": {
         "@type": "ImageObject",
         "url": "http://localhost:2368/content/images/2019/05/MotionLayout-Quickie---onTouchUp.jpg",
@@ -125,6 +125,9 @@ ghost.init({
 
   gtag('config', 'UA-59786101-4');
 </script>
+
+<link rel="stylesheet" type="text/css" src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.16.0/themes/prism.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.16.0/plugins/line-numbers/prism-line-numbers.min.css">
 
 </head>
 <body class="post-template tag-motionlayout tag-androiddev tag-constraintlayout">
@@ -182,17 +185,19 @@ ghost.init({
 
             <section class="post-full-content">
                 <div class="post-content">
-                    <p>ConstraintLayout has hit beta1! 🎉 And with this new update we have a new <code>onTouchUp</code> for the <code>OnSwipe</code> handler in a <code>Transition</code>. </p><p>So, I've decided to write this "MotionLayout Quickie" and show the different effects that each one has. If you don't know what a quickie is then go ask your parents, if you do then why are you reading this post? </p><p>I assume you have some knowledge of <code>MotionLayout</code> already. If you don't then checkout <a href="https://medium.com/google-developers/introduction-to-motionlayout-part-i-29208674b10d">these</a> posts from Nicolas Roard.</p><p><code>onTouchUp</code> allows us to set how we want our MotionLayout transition to play out after we've finished swiping. There are 6 types. In our example we'll be swiping up and down, so that's what I'll be using as we go along. Apply it whatever direction you like in your MotionLayout. All we need to do is add the <code>onTouchUp</code> attribute to the <code>OnSwipe</code> handler in our MotionScene:</p><!--kg-card-begin: code--><pre><code>    &lt;Transition
-        android:id="@+id/startToEnd"
-        app:constraintSetEnd="@+id/end"
-        app:constraintSetStart="@+id/start"&gt;
-        &lt;OnSwipe
-            app:dragDirection="dragDown"
-            app:onTouchUp="stop" // Here!
-            app:touchAnchorId="@id/bookCover"
-            app:touchAnchorSide="bottom"
-            app:touchRegionId="@id/bookCover" /&gt;
-    &lt;/Transition&gt;</code></pre><!--kg-card-end: code--><p>Let's take a look at what they look like.</p><h2 id="autocomplete">autoComplete</h2><p><code>autoComplete</code> is likely going to be the default that you use. If we swipe with enough effort our Transition from start to end will finish automatically. The same happens going in reverse, if we swipe back with enough effort it will automatically go from end to start (provided enough velocity). Let's see an example: </p><!--kg-card-begin: markdown--><p align="center">
+                    <p>ConstraintLayout has hit beta1! 🎉 And with this new update we have a new <code>onTouchUp</code> for the <code>OnSwipe</code> handler in a <code>Transition</code>. </p><p>So, I've decided to write this "MotionLayout Quickie" and show the different effects that each one has. If you don't know what a quickie is then go ask your parents, if you do then why are you reading this post? </p><p>I assume you have some knowledge of <code>MotionLayout</code> already. If you don't then checkout <a href="https://medium.com/google-developers/introduction-to-motionlayout-part-i-29208674b10d">these</a> posts from Nicolas Roard.</p><p><code>onTouchUp</code> allows us to set how we want our MotionLayout transition to play out after we've finished swiping. There are 6 types. In our example we'll be swiping up and down, so that's what I'll be using as we go along. Apply it whatever direction you like in your MotionLayout. All we need to do is add the <code>onTouchUp</code> attribute to the <code>OnSwipe</code> handler in our MotionScene:</p><!--kg-card-begin: markdown--><pre><code class="language-xml">&lt;Transition
+    android:id="@+id/startToEnd"
+    app:constraintSetEnd="@+id/end"
+    app:constraintSetStart="@+id/start"&gt;
+    &lt;OnSwipe
+        app:dragDirection="dragDown"
+        app:onTouchUp="stop" // Here!
+        app:touchAnchorId="@id/bookCover"
+        app:touchAnchorSide="bottom"
+        app:touchRegionId="@id/bookCover" /&gt;
+&lt;/Transition&gt;
+</code></pre>
+<!--kg-card-end: markdown--><p>Let's take a look at what they look like.</p><h2 id="autocomplete">autoComplete</h2><p><code>autoComplete</code> is likely going to be the default that you use. If we swipe with enough effort our Transition from start to end will finish automatically. The same happens going in reverse, if we swipe back with enough effort it will automatically go from end to start (provided enough velocity). Let's see an example: </p><!--kg-card-begin: markdown--><p align="center">
 <img alt="Example of using autoComplete" src="https://mikescamell.com/content/images/2019/05/autocomplete-1.gif" style="width: 360px; height:640px">
 </p><!--kg-card-end: markdown--><h2 id="autocompletetoend">autoCompleteToEnd</h2><p><code>autoCompleteToEnd</code> will automatically transition to the end if swipe down even a little. It will not automatically go back to the start though if we swipe back up, unless we swipe with enough effort.</p><!--kg-card-begin: markdown--><p align="center">
 <img alt="Example of using autoCompleteToEnd" src="https://mikescamell.com/content/images/2019/05/autoCompleteToEnd-1.gif" style="width: 360px; height:640px">
@@ -417,6 +422,9 @@ $(document).ready(function () {
 </script>
 
 
-    
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.16.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.16.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.16.0/components/prism-xml.min.js"></script>
 
 </body>
