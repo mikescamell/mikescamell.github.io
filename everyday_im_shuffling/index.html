@@ -1,0 +1,601 @@
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Building the Monzo Plus card selection animation with MotionLayout</title>
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="../assets/built/screen.css?v=4e9cc5bed8">
+
+    <meta name="description" content="This blog post details how to build the Monzo Plus card animation that can be found in the Monzo app, using MotionLayout rather than animations in a custom View.">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="canonical" href="https://mikescamell.com/everyday_im_shuffling/">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <link rel="amphtml" href="https://mikescamell.com/everyday_im_shuffling/amp/">
+    
+    <meta property="og:site_name" content="Mike Scamell">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Building the Monzo Plus card selection animation with MotionLayout">
+    <meta property="og:description" content="A week or so ago Ataul Munim [https://twitter.com/ataulm]  showcased his work
+building the Monzo Plus card selection animation using a custom view. The
+animation is fantastic! I love reading blog posts on how Android developers have
+created more complex animations as I feel it can be quite difficult to do. It's
+definitely getting better and easier though. I recommend you go read
+[https://medium.com/monzo-bank/pick-a-card-any-card-implementing-the-monzo-plus-card-selection-animation-on-android-53">
+    <meta property="og:url" content="http://localhost:2368/everyday_im_shuffling/">
+    <meta property="og:image" content="http://localhost:2368/content/images/2019/05/everyday_im_shuffling_header-2.png">
+    <meta property="article:published_time" content="2019-05-14T18:11:08.000Z">
+    <meta property="article:modified_time" content="2019-05-14T18:11:08.000Z">
+    <meta property="article:tag" content="motionlayout">
+    <meta property="article:tag" content="androiddev">
+    <meta property="article:tag" content="animation">
+    <meta property="article:tag" content="transition">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Building the Monzo Plus card selection animation with MotionLayout">
+    <meta name="twitter:description" content="A week or so ago Ataul Munim [https://twitter.com/ataulm]  showcased his work
+building the Monzo Plus card selection animation using a custom view. The
+animation is fantastic! I love reading blog posts on how Android developers have
+created more complex animations as I feel it can be quite difficult to do. It's
+definitely getting better and easier though. I recommend you go read
+[https://medium.com/monzo-bank/pick-a-card-any-card-implementing-the-monzo-plus-card-selection-animation-on-android-53">
+    <meta name="twitter:url" content="http://localhost:2368/everyday_im_shuffling/">
+    <meta name="twitter:image" content="http://localhost:2368/content/images/2019/05/everyday_im_shuffling_header-1.png">
+    <meta name="twitter:label1" content="Written by">
+    <meta name="twitter:data1" content="Mike Scamell">
+    <meta name="twitter:label2" content="Filed under">
+    <meta name="twitter:data2" content="motionlayout, androiddev, animation, transition">
+    <meta name="twitter:site" content="@mikescamell">
+    <meta name="twitter:creator" content="@mikescamell">
+    <meta property="og:image:width" content="1501">
+    <meta property="og:image:height" content="1025">
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Mike Scamell",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "http://localhost:2368/favicon.ico",
+            "width": 60,
+            "height": 60
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Mike Scamell",
+        "image": {
+            "@type": "ImageObject",
+            "url": "//www.gravatar.com/avatar/2a389d50c33966a79a8cf6fe29c6080e?s=250&d=mm&r=x",
+            "width": 250,
+            "height": 250
+        },
+        "url": "http://localhost:2368/author/mike/",
+        "sameAs": [
+            "https://twitter.com/mikescamell"
+        ]
+    },
+    "headline": "Building the Monzo Plus card selection animation with MotionLayout",
+    "url": "http://localhost:2368/everyday_im_shuffling/",
+    "datePublished": "2019-05-14T18:11:08.000Z",
+    "dateModified": "2019-05-14T18:11:08.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "http://localhost:2368/content/images/2019/05/everyday_im_shuffling_header-2.png",
+        "width": 1501,
+        "height": 1025
+    },
+    "keywords": "motionlayout, androiddev, animation, transition",
+    "description": "A week or so ago Ataul Munim [https://twitter.com/ataulm]  showcased his work\nbuilding the Monzo Plus card selection animation using a custom view. The\nanimation is fantastic! I love reading blog posts on how Android developers have\ncreated more complex animations as I feel it can be quite difficult to do. It&#x27;s\ndefinitely getting better and easier though. I recommend you go read\n[https://medium.com/monzo-bank/pick-a-card-any-card-implementing-the-monzo-plus-card-selection-animation-on-android-53",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "http://localhost:2368/"
+    }
+}
+    </script>
+
+    <script src="../public/ghost-sdk.js?v=4e9cc5bed8"></script>
+<script>
+ghost.init({
+	clientId: "ghost-frontend",
+	clientSecret: "07d57a1d866f"
+});
+</script>
+    <meta name="generator" content="Ghost 2.22">
+    <link rel="alternate" type="application/rss+xml" title="Mike Scamell" href="https://mikescamell.com/rss/">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-59786101-4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-59786101-4');
+</script>
+
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.16.0/themes/prism.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.16.0/themes/prism-okaidia.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.16.0/plugins/unescaped-markup/prism-unescaped-markup.css">
+
+</head>
+<body class="post-template tag-motionlayout tag-androiddev tag-animation tag-transition">
+
+    <div class="site-wrapper">
+
+        
+
+<header class="site-header outer">
+    <div class="inner">
+        <nav class="site-nav">
+    <div class="site-nav-left">
+                <a class="site-nav-logo" href="https://mikescamell.com">Mike Scamell</a>
+            <ul class="nav" role="menu">
+    <li class="nav-blog" role="menuitem"><a href="https://mikescamell.com/">Blog</a></li>
+    <li class="nav-motionlayout" role="menuitem"><a href="https://mikescamell.com/tag/motionlayout/">MotionLayout</a></li>
+    <li class="nav-talks" role="menuitem"><a href="https://mikescamell.com/talks/">Talks</a></li>
+    <li class="nav-github" role="menuitem"><a href="https://github.com/mikescamell">Github</a></li>
+</ul>
+
+    </div>
+    <div class="site-nav-right">
+        <div class="social-links">
+                <a class="social-link social-link-tw" href="https://twitter.com/mikescamell" title="Twitter" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"></path></svg>
+</a>
+        </div>
+            <a class="rss-button" href="https://feedly.com/i/subscription/feed/http://localhost:2368/rss/" title="RSS" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24"><circle cx="6.18" cy="17.82" r="2.18"></circle><path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"></path></svg>
+</a>
+    </div>
+</nav>
+    </div>
+</header>
+
+
+<main id="site-main" class="site-main outer">
+    <div class="inner">
+
+        <article class="post-full post tag-motionlayout tag-androiddev tag-animation tag-transition featured ">
+
+            <header class="post-full-header">
+                <section class="post-full-meta">
+                    <time class="post-full-meta-date" datetime="2019-05-14">14 May 2019</time>
+                        <span class="date-divider">/</span> <a href="../tag/motionlayout/">motionlayout</a>
+                </section>
+                <h1 class="post-full-title">Everyday I'm Shuffling: Building the Monzo Plus card selection animation with MotionLayout</h1>
+            </header>
+
+            <figure class="post-full-image">
+                <img srcset="../content/images/size/w300/2019/05/everyday_im_shuffling_header-2.png 300w,
+                           ../content/images/size/w600/2019/05/everyday_im_shuffling_header-2.pngg 600w,
+                          ../content/images/size/w1000/2019/05/everyday_im_shuffling_header-2.png 1000w,
+                         ../content/images/size/w2000/2019/05/everyday_im_shuffling_header-2.png 2000w" sizes="(max-width: 800px) 400px,
+                            (max-width: 1170px) 700px,
+                            1400px" src="../content/images/size/w2000/2019/05/everyday_im_shuffling_header-2.png" alt="Everyday I'm Shuffling: Building the Monzo Plus card selection animation with MotionLayout">
+            </figure>
+
+            <section class="post-full-content">
+                <div class="post-content">
+                    <p>A week or so ago <a href="https://twitter.com/ataulm">Ataul Munim</a> showcased his work building the Monzo Plus card selection animation using a custom view. The animation is fantastic! I love reading blog posts on how Android developers have created more complex animations as I feel it can be quite difficult to do. It's definitely getting better and easier though. I recommend you go <a href="https://medium.com/monzo-bank/pick-a-card-any-card-implementing-the-monzo-plus-card-selection-animation-on-android-536e5622ada9">read</a> that post before we get started, the rest will make more sense if you do.</p><p>At the bottom Ataul asked the reader "Could you do it with <code>MotionLayout</code>..." well sir, it just so happens I love <code>MotionLayout</code>.</p><p>Now I assume you have some basic knowledge of <code>MotionLayout</code> when reading this, if you don't, then go <a href="https://medium.com/google-developers/introduction-to-motionlayout-part-i-29208674b10d">here</a> and read the posts from <a href="https://twitter.com/camaelon">Nicolas Roard</a>. Otherwise you can just gaze at the pretty animations 😍</p><h2 id="before-we-start">Before we start</h2><p>Let's get some basics out of the way. We have 3 different coloured <code>MaterialCardViews</code> that represent our Mikezo™️ credit card in our layout. They are positioned centrally in the screen and stacked on top of each other. The cards look like this:</p><!--kg-card-begin: code--><pre><code class="language-xml">&lt;com.google.android.material.card.MaterialCardView
+    android:id="@+id/bottomCard"
+    android:layout_width="0dp"
+    android:layout_height="150dp"
+    android:backgroundTint="@color/midnightSky"
+    app:cardCornerRadius="8dp"
+    app:layout_constraintBottom_toTopOf="@id/cardTypeScrollView"
+    app:layout_constraintDimensionRatio="1.586"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"&gt;
+
+    &lt;TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:text="@string/mikezo"
+        android:textColor="@color/white"
+        android:textSize="22sp"
+        android:textStyle="bold" /&gt;
+
+&lt;/com.google.android.material.card.MaterialCardView&gt;</code></pre><!--kg-card-end: code--><p>We also have some rows for buttons at the bottom of the layout for switching cards. We'll need them later but they're not important right now. You can see the whole layout <a href="https://github.com/mikescamell/Loco-MotionLayout/blob/master/app/src/main/res/layout/mikezo_cards.xml">here</a>.</p><p>I want to point out, there's nothing special about this layout. All the "magic" is going to take place in our MotionScene.</p><h2 id="fan-out-and-reveal">Fan out and reveal</h2><p>First we'll recreate the animation where the cards fan out at the start. In our <code>MotionScene</code> (where the magic happens) we need a start state (start) and an end state (fanOut).</p><!--kg-card-begin: code--><pre><code class="language-xml">&lt;ConstraintSet android:id="@+id/start" /&gt;
+
+&lt;ConstraintSet android:id="@+id/fanOut"&gt;
+
+    &lt;Constraint android:id="@+id/bottomCard"&gt;
+        &lt;Transform
+            android:rotation="-17"
+            android:translationX="-12dp"
+            android:translationY="-60dp" /&gt;
+    &lt;/Constraint&gt;
+
+    &lt;Constraint android:id="@+id/middleCard"&gt;
+        &lt;Transform android:translationX="12dp" /&gt;
+    &lt;/Constraint&gt;
+
+    &lt;Constraint android:id="@+id/topCard"&gt;
+        &lt;Transform
+            android:rotation="17"
+            android:translationX="-12dp"
+            android:translationY="60dp" /&gt;
+    &lt;/Constraint&gt;
+
+&lt;/ConstraintSet&gt;</code></pre><!--kg-card-end: code--><p>Now, you <em>might</em> be a little confused. Why are there no constraints in the <code>start</code> constraint set? That's because we don't need to change anything for our start state. We're going to leave the cards as they are in the layout.</p><p>The <code>fanOut</code> state is a little different. <s>Stealing</s> Borrowing all the settings from Ataul's blog post we:</p><ul><li>Set our bottom card at a slight angle of <code>-17º</code> and translate it back <code>-60dp</code> and up. </li><li>Set the top card to a slight angle of <code>17º</code> and translate it back <code>-60dp</code> and up. </li><li>Translate the middle card's X <code>12dp</code> so it moves right slightly.</li></ul><p>That's our states sorted so now we need a <code>Transition</code> to drive it. The original animation plays automatically as the screen is opened. This means we can take advantage of the new <code>autoTransition</code> attribute released in <code>alpha5</code>. </p><!--kg-card-begin: code--><pre><code class="language-xml">&lt;Transition
+    android:id="@+id/startToFanOut"
+    app:autoTransition="animateToEnd"
+    app:constraintSetEnd="@+id/fanOut"
+    app:constraintSetStart="@+id/start"
+    app:duration="1000"
+    app:motionInterpolator="bounce"&gt;
+&lt;/Transition&gt;</code></pre><!--kg-card-end: code--><ul><li>We set <code>autoTransition</code> to <code>animateToEnd</code>. <code>autoTransition</code> has 5 options (maybe a future MotionLayout Quickie!). This means when our MotionLayout is in our <code>start</code> state it will automatically transition to the <code>fanOut</code> (end) state.</li><li>Set an animation duration of <code>1</code> second, mostly for effect! </li><li>Use the <code>bounce</code> interpolator as we can't use an <code>OvershootInterpolator</code> with <code>MotionLayout</code> <em>currently.</em> This is because in a <code>MotionLayout</code> our transitions progress go from 0 to 1 and an overshoot interpolator takes it past 1. Hopefully we'll get it in <a href="https://twitter.com/johnhoford/status/1123621968723333120">future</a>! But <code>bounce</code> gives a similar effect that's good enough. Lets take a look:</li></ul><!--kg-card-begin: html--><p align="center">
+<img alt="The cards fan out wayyyyy too quickly" src="https://mikescamell.com/content/images/2019/05/fanout_too_quick.gif" style="width: 360px; height:640px">
+</p><!--kg-card-end: html--><p>Ah we have an issue. The animation starts before we even see the cards in their start state. There's probably a couple of ways we can solve this (we could use <code>stagger</code> for instance). But we're going to take the opportunity to try something I've been thinking about with <code>autoTransitions</code> and that's a delay. Currently there's no way to specify a delay for a <code>Transition</code>, but we can do a bit of trickery and create one ourselves. In our <code>MotionScene</code>  we can add a new <code>ConstraintSet</code> which, just like our <code>start</code> state does nothing but use our layout.</p><!--kg-card-begin: code--><pre><code class="language-xml">&lt;ConstraintSet android:id="@+id/delayStart" /&gt;
+
+&lt;ConstraintSet android:id="@+id/start" /&gt;</code></pre><!--kg-card-end: code--><p>We can then add a new "fake" <code>Transition</code> which sole purpose is to delay the <code>fanOut</code> transition:</p><!--kg-card-begin: code--><pre><code class="language-xml">&lt;Transition
+    android:id="@+id/delayStartTransition"
+    app:autoTransition="animateToEnd"
+    app:constraintSetEnd="@+id/start"
+    app:constraintSetStart="@+id/delayStart"
+    app:duration="600" /&gt;
+
+&lt;Transition
+    android:id="@+id/delayStartToFanOut"
+    app:autoTransition="animateToEnd"
+    app:constraintSetEnd="@+id/fanOut"
+    app:constraintSetStart="@+id/start"
+    app:duration="1000"
+    app:motionInterpolator="bounce"&gt;
+&lt;/Transition&gt;</code></pre><!--kg-card-end: code--><p>In our new <code>delayStartTransition</code> we:</p><ul><li>Set the <code>constraintSetStart</code> to <code>delayStart</code> and <code>constraintSetEnd</code> to <code>start</code></li><li>Add an <code>autoTransition</code> using <code>animateToEnd</code> again </li><li>Set the <code>duration</code> to 600 (our delay). </li></ul><p>Everything else stays the same for our other <code>Transition</code>.</p><!--kg-card-begin: html--><p align="center">
+<img alt="The cards fanning out with a delay" src="https://mikescamell.com/content/images/2019/05/fan_out_with_delay.gif" style="width: 360px; height:640px">
+</p><!--kg-card-end: html--><p>Much better!</p><h2 id="collating-the-cards">Collating the Cards</h2><p>Now we need to collate the cards and end up with the coral/hot waffle card on top. This will happen after a card has been selected. We need a <code>Transition</code> once again as our driver.</p><!--kg-card-begin: code--><pre><code class="language-xml">&lt;Transition
+    android:id="@+id/fanOutToCollapseCards"
+    app:constraintSetEnd="@+id/topCardOnTop"
+    app:constraintSetStart="@+id/fanOut"
+    app:duration="600" /&gt;</code></pre><!--kg-card-end: code--><p>Nothing remarkable about this. We go from the <code>fanOut</code> state to a new <code>topCardOnTop</code> (great naming) state.</p><!--kg-card-begin: code--><pre><code class="language-xml">&lt;ConstraintSet android:id="@+id/topCardOnTop"&gt;
+
+&lt;Constraint android:id="@+id/bottomCard"&gt;
+    &lt;Transform
+        android:elevation="1dp"
+        android:rotation="7" /&gt;
+&lt;/Constraint&gt;
+
+&lt;Constraint android:id="@+id/middleCard"&gt;
+    &lt;Transform
+        android:elevation="1dp"
+        android:rotation="-7" /&gt;
+&lt;/Constraint&gt;
+
+&lt;Constraint android:id="@+id/topCard"&gt;
+    &lt;Transform android:elevation="4dp" /&gt;
+&lt;/Constraint&gt;
+
+&lt;/ConstraintSet&gt;</code></pre><!--kg-card-end: code--><p>Again we can borrow Ataul's settings:</p><ul><li>We set <code>rotation</code> on the bottom and middle cards by <code>7º</code> and <code>-7º</code> respectively to give them that unorganised look. We do this in our <code>Transform</code> block which can handle other things like <code>translation</code>.</li><li>We set the elevation on the bottom and middle card to <code>1dp</code> and the top to <code>4dp</code>. This ensures that our hot waffle card is on top of the others.</li></ul><p>If we select the top card after the <code>fanOut</code> transition we can see the result.</p><!--kg-card-begin: html--><p align="center">
+<img alt="The cards fanning out with a delay" src="https://mikescamell.com/content/images/2019/05/fan_out_to_top_card.gif" style="width: 360px; height:640px">
+</p><!--kg-card-end: html--><h2 id="card-select-animation">Card select animation</h2><p>This is where things get a little trickier. In the gif above, we make the easy choice and select the top card (Hot Waffle). This can also be considered the middle state when we select either the bottom and middle card, we first collapse to the top card and then our selected card moves to the top.</p><p>We're going to need to do this programmatically. This is because when we select a card we can end up in 3 distinct states; <code>topCardOnTop</code>, <code>middleCardOnTop</code> and <code>bottomCardOnTop</code>. </p><p>We can create the latter 2 states to go along with our already defined <code>topCardOnTop</code> state as we know what they'll be.</p><!--kg-card-begin: code--><pre><code class="language-xml">&lt;ConstraintSet android:id="@+id/bottomCardOnTop"&gt;
+
+    &lt;Constraint android:id="@+id/bottomCard"&gt;
+        &lt;Transform android:elevation="4dp" /&gt;
+    &lt;/Constraint&gt;
+
+    &lt;Constraint android:id="@+id/middleCard"&gt;
+        &lt;Transform
+           android:elevation="1dp"
+           android:rotation="7" /&gt;
+    &lt;/Constraint&gt;
+
+    &lt;Constraint android:id="@+id/topCard"&gt;
+        &lt;Transform
+           android:elevation="1dp"
+           android:rotation="-7" /&gt;
+    &lt;/Constraint&gt;
+
+&lt;/ConstraintSet&gt;
+
+&lt;ConstraintSet android:id="@+id/middleCardOnTop"&gt;
+
+    &lt;Constraint android:id="@+id/bottomCard"&gt;
+        &lt;Transform
+           android:elevation="1dp"
+           android:rotation="7" /&gt;
+    &lt;/Constraint&gt;
+
+    &lt;Constraint android:id="@+id/middleCard"&gt;
+        &lt;Transform android:elevation="4dp" /&gt;
+    &lt;/Constraint&gt;
+
+    &lt;Constraint android:id="@+id/topCard"&gt;
+        &lt;Transform
+           android:elevation="1dp"
+           android:rotation="-7" /&gt;
+    &lt;/Constraint&gt;
+
+&lt;/ConstraintSet&gt;</code></pre><!--kg-card-end: code--><p>You'll notice this are just different variations of the <code>topCardOnTop</code> state, where the card selected has an elevation of <code>4dp</code> and the cards not selected have <code>rotation</code> and an <code>elevation</code> of <code>1dp</code> applied.</p><p>Now if we just used the same Transition we used for the top card, replacing the end state with either the above the card would literally just appear on top. We wouldn't get the nice slide out effect. We're going to need to alter the cards animation path. We can use <code>KeyFrames</code> to help us achieve this.</p><p>A <code>KeyAttribute</code> is a type of <code>KeyFrame</code>. It lets us modify attribute values on a View, allowing us to manipulate them at certain times in the animation. This is exactly what we want to do with our animations, we want them to <strong>end</strong> up the way we've defined them in our states, we just want to slightly change how they get there. An intermediary step. Lets look at the <code>topCardToBottomCard</code> Transition.</p><!--kg-card-begin: code--><pre><code class="language-xml">&lt;Transition
+    android:id="@+id/topCardToBottomCard"
+    app:constraintSetEnd="@+id/bottomCardOnTop"
+    app:constraintSetStart="@+id/topCardOnTop"
+    app:duration="600"
+    app:motionInterpolator="easeOut"&gt;
+    &lt;KeyFrameSet&gt;
+        &lt;KeyAttribute
+            android:rotation="45"
+            android:translationX="125dp"
+            android:translationY="-200dp"
+            app:framePosition="50"
+            app:motionTarget="@+id/bottomCard" /&gt;
+    &lt;/KeyFrameSet&gt;
+&lt;/Transition&gt;</code></pre><!--kg-card-end: code--><p>With our <code>KeyAttribute</code></p><ul><li>We target the bottomCard as this is the one being selected</li><li>Move the card out <code>125dp</code> and up <code>200dp</code> using <code>translationX</code> and <code>translationY</code>. </li><li>We set <code>rotation</code> to <code>45º</code> just like the original animation.</li><li>This all happens halfway through the animation by setting the <code>framePosition</code> to 50.</li></ul><p>As the card on top's elevation is always set to <code>4dp</code> in our end state we know that halfway through our animation our card will be at <code>2dp</code> which means there won't be a clash when it comes over back in over the top of the previous. Remember a <code>KeyFrame</code> is just a manipulation at a point in time, our <code>Transition</code> will always finish up in the end state.</p><p>We're going to need 6 total <code>Transitions</code> as we have 3 cards and 2 possible end states with either of the other cards on top. We can just copy the above <code>Transition</code> and changes the start and end states where appropriate and target correct cards.</p><p>We can't drive these Transitions by using an <code>OnClick</code> handler on our buttons. Why? Well we have no way of knowing what state we're currently in (which card is selected) and where we should be going. We can't define that in our <code>MotionScene</code>. We can however figure this out in code.</p><h2 id="pick-a-card-any-card">Pick a card, any card</h2><p>When we need a little more control we can jump back into code with <code>MotionLayout</code>. We're going to need listeners for our buttons, some way to know what state we're in and the ability to trigger the correct <code>Transition</code>. We can do that in the <code>onCreate</code> of our <code>Activity</code>.</p><!--kg-card-begin: code--><pre><code class="language-kotlin">card1Button.setOnClickListener {
+    when (root.currentState) {
+        R.id.fanOut -&gt; {
+            root.setTransition(R.id.fanOut, R.id.topCardOnTop)
+            root.transitionToEnd()
+            collapsedCardCompletedListener(R.id.bottomCardOnTop)
+            midnightPieCheckBox.isVisible = true
+        }
+        R.id.bottomCardOnTop -&gt; {
+            Log.d("Mikezo", "Card 1 already on top")
+        }
+        R.id.middleCardOnTop -&gt; {
+            root.setTransition(R.id.middleCardOnTop, R.id.bottomCardOnTop)
+            root.transitionToEnd()
+            ...
+        }
+        R.id.topCardOnTop -&gt; {
+            root.setTransition(R.id.topCardOnTop, R.id.bottomCardOnTop)
+            root.transitionToEnd()
+            ...
+        }
+    }
+
+    private fun collapsedCardCompletedListener(@IdRes endStateId: Int) {
+        root.setTransitionListener(object : MotionLayout.TransitionListener {
+
+            ...
+
+            override fun onTransitionCompleted(motionLayout: MotionLayout, currentId: Int) {
+                if (currentId == R.id.topCardOnTop) {
+                    root.setTransition(R.id.topCardOnTop, endStateId)
+                    root.transitionToEnd()
+                }
+                root.setTransitionListener(null)
+            }
+        })
+    }
+}</code></pre><!--kg-card-end: code--><p>When a card button is clicked we switch our actions based on the current state the MotionLayout is in by calling <code>root.currentState</code></p><ul><li>If we're in the <code>fanOut</code> state we always need to go to the <code>topCardOnTop</code> first, wait for that <code>Transition</code> to end and then move to the <code>bottomCardOnTop</code> state. We can do this by setting a <code>TransitionListener</code> listener on the root and waiting for the <code>onTransitionCompleted</code> callback and then trigger our second <code>Transition</code>. This is all encapsulated in the <code>collapsedCardCompletedListener</code> function.</li><li>If the bottom card is on top already we do nothing</li><li>If it's the <code>middleCardOnTop</code> or <code>topCardOnTop</code> states, we set the start state to the respective state and then our end state to <code>bottomCardOnTop</code> and proceed to call <code>transitionToEnd</code> to play the animation.</li></ul><p>In all cases <code>MotionLayout</code> is helping us out. It will search through the <code>Transitions</code> we created in our <code>MotionScene</code> and find one that has a matching start and end state. This is handy as it means we don't have to programmatically create all the <code>KeyAttributes</code> for each <code>Transition</code>, we can keep them in the <code>Transitions</code> in the <code>MotionScene</code>.</p><p>We just need to rinse and repeat this for the middle and end buttons, adjusting our <code>when</code> statement appropriately.</p><!--kg-card-begin: gallery--><figure class="kg-card kg-gallery-card kg-width-wide kg-card-hascaption"><div class="kg-gallery-container"><div class="kg-gallery-row"><div class="kg-gallery-image"><img src="https://mikescamell.com/content/images/2019/05/monzo_finished_2.gif" width="540" height="960"></div><div class="kg-gallery-image"><img src="https://mikescamell.com/content/images/2019/05/monzo_finished_1.gif" width="540" height="960"></div></div></div><figcaption>The final animation with different option sequences</figcaption></figure><!--kg-card-end: gallery--><p>And there we have it! The Mikezo™️ Plus Card selection animation </p><p>Now we could add more functionality e.g. allow for different coloured cards to be selected, add swiping instead of clicking but that's for another time.</p><p>You can find all the repository containing the code <a href="https://github.com/mikescamell/Loco-MotionLayout">here</a>. The PR is <a href="https://github.com/mikescamell/Loco-MotionLayout/pull/4/files">here</a>. This repo also contains the demos for my talk "Do the Loco-MotionLayout" presented at droidcon Italy and droicon Boston. You can watch it <a href="https://www.youtube.com/watch?v=NpaSRMV09U4">here</a>.</p><p>Is there something I could have done better? Hate the name of my new challenger bank? Don't know what Legume Blue is? Have you ever replaced a lightbulb with an orange? Hit me up on <a href="https://www.twitter.com/mikescamell">Twitter</a>.</p><p>Thanks for reading!</p>
+                </div>
+            </section>
+
+
+            <footer class="post-full-footer">
+
+
+                    
+<section class="author-card">
+        <img class="author-profile-image" src="http://www.gravatar.com/avatar/2a389d50c33966a79a8cf6fe29c6080e?s=250&amp;d=mm&amp;r=x" alt="Mike Scamell">
+    <section class="author-card-content">
+        <h4 class="author-card-name"><a href="../author/mike/">Mike Scamell</a></h4>
+            <p>Read <a href="../author/mike/">more posts</a> by this author.</p>
+    </section>
+</section>
+<div class="post-full-footer-right">
+    <a class="author-card-button" href="../author/mike/">Read More</a>
+</div>
+
+
+            </footer>
+
+
+        </article>
+
+    </div>
+</main>
+
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+                <article class="read-next-card">
+                    <header class="read-next-card-header">
+                        <small class="read-next-card-header-sitetitle">— Mike Scamell —</small>
+                        <h3 class="read-next-card-header-title"><a href="../tag/motionlayout/">motionlayout</a></h3>
+                    </header>
+                    <div class="read-next-divider"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24"><path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"></path></svg>
+</div>
+                    <div class="read-next-card-content">
+                        <ul>
+                            <li><a href="../motionlayoutquickie-ontouchup/">MotionLayout Quickie - onTouchUp</a></li>
+                        </ul>
+                    </div>
+                    <footer class="read-next-card-footer">
+                        <a href="../tag/motionlayout/">1 post →</a>
+                    </footer>
+                </article>
+
+
+                <article class="post-card post tag-motionlayout tag-androiddev tag-constraintlayout featured ">
+
+    <a class="post-card-image-link" href="../motionlayoutquickie-ontouchup/">
+        <img class="post-card-image" srcset="../content/images/size/w300/2019/05/MotionLayout-Quickie---onTouchUp.jpg 300w,
+                   ../content/images/size/w600/2019/05/MotionLayout-Quickie---onTouchUp.jpgg 600w,
+                  ../content/images/size/w1000/2019/05/MotionLayout-Quickie---onTouchUp.jpg 1000w,
+                 ../content/images/size/w2000/2019/05/MotionLayout-Quickie---onTouchUp.jpg 2000w" sizes="(max-width: 1000px) 400px, 700px" src="../content/images/size/w600/2019/05/MotionLayout-Quickie---onTouchUp.jpg" alt="MotionLayout Quickie - onTouchUp">
+    </a>
+
+    <div class="post-card-content">
+
+        <a class="post-card-content-link" href="../motionlayoutquickie-ontouchup/">
+
+            <header class="post-card-header">
+                    <span class="post-card-tags">motionlayout</span>
+                <h2 class="post-card-title">MotionLayout Quickie - onTouchUp</h2>
+            </header>
+
+            <section class="post-card-excerpt">
+                <p>ConstraintLayout has hit beta1! 🎉 And with this new update we have a new onTouchUp for the OnSwipe handler in a Transition that we can use in a MotionLayout.So, I've decided to write</p>
+            </section>
+
+        </a>
+
+        <footer class="post-card-meta">
+
+            <ul class="author-list">
+                <li class="author-list-item">
+
+                    <div class="author-name-tooltip">
+                        Mike Scamell
+                    </div>
+
+                        <a href="../author/mike/" class="static-avatar">
+                            <img class="author-profile-image" src="http://www.gravatar.com/avatar/2a389d50c33966a79a8cf6fe29c6080e?s=250&amp;d=mm&amp;r=x" alt="Mike Scamell">
+                        </a>
+                </li>
+            </ul>
+
+            <span class="reading-time">3 min read</span>
+
+        </footer>
+
+    </div>
+
+</article>
+
+        </div>
+    </div>
+</aside>
+
+<div class="floating-header">
+    <div class="floating-header-logo">
+        <a href="https://mikescamell.com">
+            <span>Mike Scamell</span>
+        </a>
+    </div>
+    <span class="floating-header-divider">—</span>
+    <div class="floating-header-title">Everyday I'm Shuffling: Building the Monzo Plus card selection animation with MotionLayout</div>
+    <div class="floating-header-share">
+        <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24">
+    <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"></path>
+</svg>
+</div>
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=Everyday%20I'm%20Shuffling%3A%20Building%20the%20Monzo%20Plus%20card%20selection%20animation%20with%20MotionLayout&amp;url=https://mikescamell.com/everyday_im_shuffling/" onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"></path></svg>
+        </a>
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https://mikescamell.com/everyday_im_shuffling/" onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"></path></svg>
+        </a>
+    </div>
+    <progress id="reading-progress" class="progress" value="0">
+        <div class="progress-container">
+            <span class="progress-bar"></span>
+        </div>
+    </progress>
+</div>
+
+
+
+
+        <footer class="site-footer outer">
+            <div class="site-footer-content inner">
+                <section class="copyright"><a href="https://mikescamell.com">Mike Scamell</a> © 2019</section>
+                <nav class="site-footer-nav">
+                    <a href="https://mikescamell.com">Latest Posts</a>
+                    
+                    <a href="https://twitter.com/mikescamell" target="_blank" rel="noopener">Twitter</a>
+                    <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a>
+                </nav>
+            </div>
+        </footer>
+
+    </div>
+
+
+    <script>
+        var images = document.querySelectorAll('.kg-gallery-image img');
+        images.forEach(function (image) {
+            var container = image.closest('.kg-gallery-image');
+            var width = image.attributes.width.value;
+            var height = image.attributes.height.value;
+            var ratio = width / height;
+            container.style.flex = ratio + ' 1 0%';
+        })
+    </script>
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous">
+    </script>
+    <script type="text/javascript" src="../assets/built/jquery.fitvids.js?v=4e9cc5bed8"></script>
+
+
+    <script>
+
+// NOTE: Scroll performance is poor in Safari
+// - this appears to be due to the events firing much more slowly in Safari.
+//   Dropping the scroll event and using only a raf loop results in smoother
+//   scrolling but continuous processing even when not scrolling
+$(document).ready(function () {
+    // Start fitVids
+    var $postContent = $(".post-full-content");
+    $postContent.fitVids();
+    // End fitVids
+
+    var progressBar = document.querySelector('#reading-progress');
+    var header = document.querySelector('.floating-header');
+    var title = document.querySelector('.post-full-title');
+
+    var lastScrollY = window.scrollY;
+    var lastWindowHeight = window.innerHeight;
+    var lastDocumentHeight = $(document).height();
+    var ticking = false;
+
+    function onScroll() {
+        lastScrollY = window.scrollY;
+        requestTick();
+    }
+
+    function onResize() {
+        lastWindowHeight = window.innerHeight;
+        lastDocumentHeight = $(document).height();
+        requestTick();
+    }
+
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(update);
+        }
+        ticking = true;
+    }
+
+    function update() {
+        var trigger = title.getBoundingClientRect().top + window.scrollY;
+        var triggerOffset = title.offsetHeight + 35;
+        var progressMax = lastDocumentHeight - lastWindowHeight;
+
+        // show/hide floating header
+        if (lastScrollY >= trigger + triggerOffset) {
+            header.classList.add('floating-active');
+        } else {
+            header.classList.remove('floating-active');
+        }
+
+        progressBar.setAttribute('max', progressMax);
+        progressBar.setAttribute('value', lastScrollY);
+
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', onScroll, {passive: true});
+    window.addEventListener('resize', onResize, false);
+
+    update();
+
+});
+</script>
+
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.16.0/prism.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.16.0/components/prism-xml.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.16.0/components/prism-kotlin.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.16.0/plugins/unescaped-markup/prism-unescaped-markup.min.js"></script>
+
+</body>
