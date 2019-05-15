@@ -8,7 +8,7 @@
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" type="text/css" href="../assets/built/screen.css?v=553a335f92">
+    <link rel="stylesheet" type="text/css" href="../assets/built/screen.css?v=66824cde88">
 
     <meta name="description" content="This blog post details how to build the Monzo Plus card animation that can be found in the Monzo app, using MotionLayout rather than animations in a custom View.">
     <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
@@ -28,7 +28,7 @@ definitely getting better and easier though. I recommend you go read
     <meta property="og:url" content="http://localhost:2368/everyday_im_shuffling/">
     <meta property="og:image" content="http://localhost:2368/content/images/2019/05/everyday_im_shuffling_header-2.png">
     <meta property="article:published_time" content="2019-05-14T18:11:08.000Z">
-    <meta property="article:modified_time" content="2019-05-14T21:49:54.000Z">
+    <meta property="article:modified_time" content="2019-05-15T12:21:53.000Z">
     <meta property="article:tag" content="motionlayout">
     <meta property="article:tag" content="androiddev">
     <meta property="article:tag" content="animation">
@@ -84,7 +84,7 @@ definitely getting better and easier though. I recommend you go read
     "headline": "Building the Monzo Plus card selection animation with MotionLayout",
     "url": "http://localhost:2368/everyday_im_shuffling/",
     "datePublished": "2019-05-14T18:11:08.000Z",
-    "dateModified": "2019-05-14T21:49:54.000Z",
+    "dateModified": "2019-05-15T12:21:53.000Z",
     "image": {
         "@type": "ImageObject",
         "url": "http://localhost:2368/content/images/2019/05/everyday_im_shuffling_header-2.png",
@@ -100,7 +100,7 @@ definitely getting better and easier though. I recommend you go read
 }
     </script>
 
-    <script src="../public/ghost-sdk.js?v=553a335f92"></script>
+    <script src="../public/ghost-sdk.js?v=66824cde88"></script>
 <script>
 ghost.init({
 	clientId: "ghost-frontend",
@@ -351,9 +351,7 @@ ghost.init({
     }
 
     private fun collapsedCardCompletedListener(@IdRes endStateId: Int) {
-        root.setTransitionListener(object : MotionLayout.TransitionListener {
-
-            ...
+        root.setTransitionListener(object : TransitionAdapter() {
 
             override fun onTransitionCompleted(motionLayout: MotionLayout, currentId: Int) {
                 if (currentId == R.id.topCardOnTop) {
@@ -364,7 +362,7 @@ ghost.init({
             }
         })
     }
-}</code></pre><!--kg-card-end: code--><p>When a card button is clicked we switch our actions based on the current state the <code>MotionLayout</code> is in by calling <code>root.currentState()</code></p><ul><li>If we're in the <code>fanOut</code> state we always need to go to the <code>topCardOnTop</code> first, wait for that <code>Transition</code> to end and then move to the <code>bottomCardOnTop</code> state. We can do this by setting a <code>TransitionListener</code> on the root, waiting for the <code>onTransitionCompleted</code> callback and then triggering our second <code>Transition</code>. This is all encapsulated in the <code>collapsedCardCompletedListener</code> function</li><li>If the bottom card is on top already we do nothing</li><li>If it's the <code>middleCardOnTop</code> or <code>topCardOnTop</code> states, we set the start state to the respective state and then our end state to <code>bottomCardOnTop</code> and proceed to call <code>transitionToEnd</code> to play the animation</li></ul><p>In all cases <code>MotionLayout</code> is helping us out. It will search through the <code>Transitions</code> we created in our <code>MotionScene</code> and find one that has a matching start and end state. This is handy as it means we don't have to programmatically create all the <code>KeyAttributes</code> for each <code>Transition</code>, we can keep them in the <code>Transitions</code> in the <code>MotionScene</code>.</p><p>We just need to rinse and repeat this for the middle and end buttons, adjusting our <code>when</code> statement appropriately.</p><!--kg-card-begin: html--><p align="center">
+}</code></pre><!--kg-card-end: code--><p>When a card button is clicked we switch our actions based on the current state the <code>MotionLayout</code> is in by calling <code>root.currentState()</code></p><ul><li>If we're in the <code>fanOut</code> state we always need to go to the <code>topCardOnTop</code> first, wait for that <code>Transition</code> to end and then move to the <code>bottomCardOnTop</code> state. We can do this by setting a <code>TransitionListener</code> on the root, waiting for the <code>onTransitionCompleted</code> callback and then triggering our second <code>Transition</code>. In our case we're using the <code>TransitionAdapter</code> class so we don't have to override all the <code>TransitionListener</code> callbacks. This is all encapsulated in the <code>collapsedCardCompletedListener</code> function</li><li>If the bottom card is on top already we do nothing</li><li>If it's the <code>middleCardOnTop</code> or <code>topCardOnTop</code> states, we set the start state to the respective state and then our end state to <code>bottomCardOnTop</code> and proceed to call <code>transitionToEnd</code> to play the animation</li></ul><p>In all cases <code>MotionLayout</code> is helping us out. It will search through the <code>Transitions</code> we created in our <code>MotionScene</code> and find one that has a matching start and end state. This is handy as it means we don't have to programmatically create all the <code>KeyAttributes</code> for each <code>Transition</code>, we can keep them in the <code>Transitions</code> in the <code>MotionScene</code>.</p><p>We just need to rinse and repeat this for the middle and end buttons, adjusting our <code>when</code> statement appropriately.</p><!--kg-card-begin: html--><p align="center">
 <img alt="The cards fanning out with a delay" src="https://mikescamell.com/content/images/2019/05/finished1.gif" style="width: 360px; height:640px">
 </p><!--kg-card-end: html--><p>And there we have it! The Mikezo™️ Plus Card selection animation </p><p>Now we could add more functionality e.g. allow for different coloured cards to be selected, add swiping instead of clicking but that's for another time.</p><p>You can find all the repository containing the code <a href="https://github.com/mikescamell/Loco-MotionLayout">here</a>. The PR is <a href="https://github.com/mikescamell/Loco-MotionLayout/pull/4/files">here</a>. This repo also contains the demos for my talk "Do the Loco-MotionLayout" presented at droidcon Italy and droicon Boston. You can watch it <a href="https://www.youtube.com/watch?v=NpaSRMV09U4">here</a>.</p><p>Is there something I could have done better? Hate the name of my new challenger bank? Don't know what Legume Blue is? Have you ever replaced a lightbulb with an orange? Hit me up on <a href="https://www.twitter.com/mikescamell">Twitter</a>.</p><p>Thanks for reading!</p>
                 </div>
@@ -526,7 +524,7 @@ ghost.init({
 
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous">
     </script>
-    <script type="text/javascript" src="../assets/built/jquery.fitvids.js?v=553a335f92"></script>
+    <script type="text/javascript" src="../assets/built/jquery.fitvids.js?v=66824cde88"></script>
 
 
     <script>
